@@ -1,3 +1,4 @@
+import 'package:agenclean_project/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -5,16 +6,13 @@ void main() {
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({ Key? key }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('óoohhh TCC abençoado\ntest'),
-        ),
-      ),
+  Widget build(BuildContext context){
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LoginScreen(),
     );
   }
 }
