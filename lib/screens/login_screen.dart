@@ -12,7 +12,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: const SignInPage(),
     );
   }
@@ -52,7 +51,7 @@ class SignInPage extends StatelessWidget {
   }
 }
 
-//Essa classe é onde a logo junto com o texto abaixo dela 
+//Essa classe é onde a logo junto com o texto abaixo dela
 class _Logo extends StatelessWidget {
   const _Logo({Key? key}) : super(key: key);
 
@@ -125,7 +124,6 @@ class __FormContentState extends State<_FormContent> {
                 if (!emailValid) {
                   return 'Por favor, coloque um email válido';
                 }
-
                 return null;
               },
               decoration: const InputDecoration(
@@ -187,11 +185,12 @@ class __FormContentState extends State<_FormContent> {
                   _rememberMe = value;
                 });
               },
-              title:
-                  const Text('Lembrar', style: TextStyle(color: Colors.white)),
+              title: const Text('Lembrar senha',
+                  style: TextStyle(color: Colors.white)),
               controlAffinity: ListTileControlAffinity.leading,
               dense: true,
               contentPadding: const EdgeInsets.all(0),
+              activeColor: laranjaPrimario,
             ),
             _gap(),
             SizedBox(
@@ -201,6 +200,8 @@ class __FormContentState extends State<_FormContent> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(4),
                   ),
+                  backgroundColor: laranjaPrimario, // Cor da caixa
+                  foregroundColor: corBranca, // Cor do texto
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(10.0),
@@ -217,6 +218,16 @@ class __FormContentState extends State<_FormContent> {
                     /// do something
                   }
                 },
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                // Adicionar a navegação para a tela de cadastro
+                // Navigator.push(context, MaterialPageRoute(builder: (context),));
+              },
+              child: Text(
+                'Realizar Cadastro',
+                style: TextStyle(color: laranjaPrimario),
               ),
             ),
           ],
