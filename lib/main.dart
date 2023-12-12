@@ -1,4 +1,4 @@
-import 'package:agenclean_project/screens/login_screen.dart';
+import 'package:agenclean_project/screens/onboarding_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +10,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: OnboardingPage(),
     );
   }
 }

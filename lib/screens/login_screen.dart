@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:agenclean_project/constants.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
@@ -11,8 +13,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const SignInPage(),
+    return const Scaffold(
+      body: SignInPage(),
     );
   }
 }
