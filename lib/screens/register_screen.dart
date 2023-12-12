@@ -1,82 +1,73 @@
 import 'package:flutter/material.dart';
-import 'package:agenclean_project/constants.dart';
 
-class RegisterScreen extends StatefulWidget {
-  @override
-  _RegisterScreenState createState() => _RegisterScreenState();
-}
+class RegisterScreen extends StatelessWidget {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const RegisterInPage(),
-    );
-  }
-}
+      appBar: AppBar(
+        title: Text('Registro'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Preencha este campo';
+                  }
 
-class RegisterInPage extends StatelessWidget {
-  const RegisterInPage({Key? key}) : super(key: key);
+                  bool emailValid = RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(value);
+                  if (!emailValid) {
+                    return 'Por favor, coloque um email válido';
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  hintText: 'Digite seu email',
+                  prefixIcon: Icon(Icons.email_outlined),
+                ),
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Preencha este campo';
+                  }
 
-  @override
-  Widget build(BuildContext context) {
-    final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
-
-    return Scaffold(
-        backgroundColor: corEscura,
-        body: Center(
-            child: isSmallScreen
-                ? const Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      _Logo(),
-                      _FormContent(),
-                    ],
-                  )
-                : Container(
-                    padding: const EdgeInsets.all(32.0),
-                    constraints: const BoxConstraints(maxWidth: 800),
-                    child: const Row(
-                      children: [
-                        Expanded(child: _Logo()),
-                        Expanded(
-                          child: Center(child: _FormContent()),
-                        ),
-                      ],
-                    ),
-                  )));
-  }
-}
-
-class _Logo extends StatelessWidget {
-  const _Logo({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Transform.scale(
-          scale: 0.7,
-          child: logoImage,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            "Entre com a sua conta",
-            textAlign: TextAlign.center,
-            style: isSmallScreen
-            ? Theme.of(context)
-                .textTheme
-                .headlineSmall
-                ?.copyWith(color: Colors.white),
+                  if (value.length < 6) {
+                    return 'A senha deve ter no mínimo 6 caracteres';
+                  }
+                  return null;
+                },
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Senha',
+                  hintText: 'Coloque a sua senha',
+                  prefixIcon: Icon(Icons.lock_outline_rounded),
+                ),
+              ),
+              SizedBox(height: 24.0),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState?.validate() ?? false) {
+                    // Realizar o registro do usuário
+                  }
+                },
+                child: Text('Registrar'),
+              ),
+            ],
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }
-
-class _FormContent extends 

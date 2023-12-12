@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:agenclean_project/constants.dart';
 import 'package:agenclean_project/screens/home.dart';
+import 'package:agenclean_project/screens/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -231,8 +232,8 @@ class __FormContentState extends State<_FormContent> {
             ),
             TextButton(
               onPressed: () {
-                // Adicionar a navegação para a tela de cadastro
-                // Navigator.push(context, MaterialPageRoute(builder: (context),));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterScreen()));
               },
               child: Text(
                 'Realizar Cadastro',
