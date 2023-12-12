@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:agenclean_project/constants.dart';
+import 'package:agenclean_project/screens/home.dart';
 import 'package:agenclean_project/screens/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
@@ -12,8 +15,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const SignInPage(),
+    return const Scaffold(
+      body: SignInPage(),
     );
   }
 }
@@ -217,6 +220,12 @@ class __FormContentState extends State<_FormContent> {
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     /// do something
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Home(),
+                      ),
+                    );
                   }
                 },
               ),

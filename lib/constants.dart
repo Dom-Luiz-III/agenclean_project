@@ -10,3 +10,7 @@ Color corBranca = const Color(0xFFE5E7E9);
 
 //Local para carregar imagens:
 Image logoImage = Image.asset('assets/images/agenclean_logo.png');
+Image timeLimpeza = Image.asset('assets/images/time_limpeza.png');
+Image diarista = Image.asset('assets/images/diarista.png');
+Image escudo = Image.asset('assets/images/escudo.png');
+Image conforto = Image.asset('assets/images/conforto.png');
