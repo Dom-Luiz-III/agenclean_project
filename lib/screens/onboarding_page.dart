@@ -18,8 +18,7 @@ class OnboardingPage extends StatelessWidget {
         ),
         OnboardingPageModel(
           title: 'Não sofra com calote ou má atendimento',
-          description:
-              'Na AgenClean, ambos os lados recebem avaliações.',
+          description: 'Na AgenClean, ambos os lados recebem avaliações.',
           imageUrl: 'https://i.ibb.co/LvmZypG/storefront-illustration-2.png',
           bgColor: azulPrimario,
         ),
@@ -32,7 +31,8 @@ class OnboardingPage extends StatelessWidget {
         ),
         OnboardingPageModel(
           title: 'Focado em quem está mais perto de você',
-          description: 'Priorizamos quem está mais perto de você, para mais praticidade.',
+          description:
+              'Priorizamos quem está mais perto de você, para mais praticidade.',
           imageUrl: 'https://i.ibb.co/cJqsPSB/scooter.png',
           bgColor: laranjaPrimario,
         ),
@@ -230,11 +230,12 @@ class _OnboardingPageState extends State<OnboardingPagePresenter> {
     );
   }
 }
+
 class OnboardingPageModel {
   final String title;
   final String description;
   final String imageUrl;
-  
+
   final Color bgColor;
   final Color textColor;
 

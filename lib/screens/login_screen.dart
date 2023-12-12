@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:agenclean_project/constants.dart';
+import 'package:agenclean_project/screens/home.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -218,6 +219,12 @@ class __FormContentState extends State<_FormContent> {
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     /// do something
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Home(),
+                      ),
+                    );
                   }
                 },
               ),
