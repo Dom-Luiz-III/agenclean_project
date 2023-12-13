@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+
 //Cores:
 Color laranjaPrimario = const Color(0xFFFF671E);
 Color azulPrimario = const Color(0xFF01264E);
 Color azulSecundario = const Color(0xFF5D93F8);
-Color corEscura = const Color(0xFF22272B);
+Color cordeFundo1 = const Color(0xFF22272B);
+Color cordeFundo2 = const Color(0xFF161C21);
 Color corMaisEscura = const Color.fromARGB(255, 19, 21, 24);
 Color corBranca = const Color(0xFFE5E7E9);
 

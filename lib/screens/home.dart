@@ -33,7 +33,7 @@ class _GoogleBottomBarState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: corEscura,
+      backgroundColor: cordeFundo1,
       appBar: AppBar(
         title: const Text(
           'AGENCLEAN contratante',

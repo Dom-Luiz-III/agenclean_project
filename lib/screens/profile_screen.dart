@@ -1,162 +1,6 @@
 import 'package:agenclean_project/constants.dart';
 import 'package:flutter/material.dart';
-
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: corEscura,
-      body: Column(
-        children: [
-          const Expanded(flex: 1, child: _TopPortion()),
-          Expanded(
-            flex: 3,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _customFloatingActionButton(
-                        onPressed: () {},
-                        heroTag: 'abilities',
-                        label: "Habilidades",
-                        backgroundColor: azulSecundario, // Cor do botão
-                      ),
-                      const SizedBox(
-                          width: 16.0), // espaçamento entre os botões
-                      _customFloatingActionButton(
-                        onPressed: () {},
-                        heroTag: 'edit',
-                        label: "Editar Perfil",
-                        backgroundColor: azulPrimario, // Cor do botão
-                      ),
-                      const SizedBox(
-                          width: 16.0), // espaçamento entre os botões
-                      _customCircularButton(
-                        onPressed: () {},
-                        icon: Icons.more_horiz,
-                        backgroundColor: Colors.green,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  const _ProfileInfoRow()
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-Widget _customFloatingActionButton({
-  required VoidCallback onPressed,
-  required String heroTag,
-  required String label,
-  required Color backgroundColor,
-}) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 3.0, horizontal: 12.0),
-    child: FloatingActionButton.extended(
-      onPressed: onPressed,
-      heroTag: heroTag,
-      elevation: 0,
-      label: Text(
-        label,
-        style: const TextStyle(color: Colors.white),
-      ),
-      backgroundColor: backgroundColor,
-    ),
-  );
-}
-
-Widget _customCircularButton({
-  required VoidCallback onPressed,
-  required IconData icon,
-  required Color backgroundColor,
-}) {
-  return Container(
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      color: backgroundColor,
-    ),
-    child: IconButton(
-      onPressed: onPressed,
-      icon: Icon(
-        icon,
-        color: Colors.white,
-      ),
-    ),
-  );
-}
-
-class _ProfileInfoRow extends StatelessWidget {
-  const _ProfileInfoRow({Key? key}) : super(key: key);
-
-  final List<ProfileInfoItem> _items = const [
-    ProfileInfoItem("Posts", 900),
-    ProfileInfoItem("Followers", 120),
-    ProfileInfoItem("Following", 200),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      constraints: const BoxConstraints(maxWidth: 400),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: _items
-            .map((item) => Expanded(
-                    child: Row(
-                  children: [
-                    if (_items.indexOf(item) != 0) const VerticalDivider(),
-                    Expanded(child: _singleItem(context, item)),
-                  ],
-                )))
-            .toList(),
-      ),
-    );
-  }
-
-  Widget _singleItem(BuildContext context, ProfileInfoItem item) => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              item.value.toString(),
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Text(
-            item.title,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Colors.white,
-                ),
-          )
-        ],
-      );
-}
-
-class ProfileInfoItem {
-  final String title;
-  final int value;
-  const ProfileInfoItem(this.title, this.value);
-}
+// import 'package:firebase_auth/firebase_auth.dart';
 
 class _TopPortion extends StatelessWidget {
   const _TopPortion({Key? key}) : super(key: key);
@@ -167,14 +11,10 @@ class _TopPortion extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         Container(
-          margin: const EdgeInsets.only(bottom: 50),
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              colors: [Color(0xFF01264E), Color(0xFF5D93F8)],
-            ),
-            borderRadius: BorderRadius.only(
+          margin: const EdgeInsets.only(bottom: 80),
+          decoration: BoxDecoration(
+            color: azulPrimario,
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
             ),
@@ -206,21 +46,22 @@ class _TopPortion extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(width: 10),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Nome do Usuário",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium
-                          ?.copyWith(
-                              fontWeight: FontWeight.bold, color: Colors.white),
+                // const SizedBox(width: 10),
+                const Expanded(
+                  child: SizedBox(
+                    height: 55,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          /*FirebaseAuth.instance.currentUser!.displayName ??*/ 'Nome do Usuário',
+                          style: TextStyle(fontSize: 18.0, color: Colors.white),
+                        ),
+                        // Adicione outros elementos de texto conforme necessário
+                      ],
                     ),
-                    // Adicione outros elementos de texto conforme necessário
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -229,4 +70,133 @@ class _TopPortion extends StatelessWidget {
       ],
     );
   }
+}
+
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const String userDescription =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+    return Scaffold(
+      backgroundColor: cordeFundo1,
+      body: Column(
+        children: [
+          const Expanded(flex: 1, child: _TopPortion()),
+          Expanded(
+            flex: 3,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 10),
+                  // texto da descrição
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 450),
+                    child: const Text(
+                      userDescription,
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(fontSize: 16.0, color: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  // "botões de habilidades", "editar perfil" e "extra"
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _customFloatingActionButton(
+                        onPressed: () {},
+                        heroTag: 'abilities',
+                        label: "Habilidades",
+                        backgroundColor: azulSecundario, // Cor do botão
+                      ),
+                      const SizedBox(
+                          width: 10.0), // espaçamento entre os botões
+                      _customFloatingActionButton(
+                        onPressed: () {},
+                        heroTag: 'edit',
+                        label: "Editar Perfil",
+                        backgroundColor: azulPrimario, // Cor do botão
+                      ),
+                      const SizedBox(
+                          width: 10.0), // espaçamento entre os botões
+                      _customCircularButton(
+                        onPressed: () {},
+                        icon: Icons.more_horiz,
+                        backgroundColor: Colors.green,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// costumizador para botões de "habilidades" e "editar perfil"
+Widget _customFloatingActionButton({
+  required VoidCallback onPressed,
+  required String heroTag,
+  required String label,
+  required Color backgroundColor,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 10.0),
+    child: SizedBox(
+      width: 120,
+      height: 30,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0), // Curvatura das bordas
+          ),
+        ),
+        child: Text(
+          label,
+          style: const TextStyle(color: Colors.white, fontSize: 14.0),
+        ),
+      ),
+    ),
+  );
+}
+
+// customizador para o botão circular
+Widget _customCircularButton({
+  required VoidCallback onPressed,
+  required IconData icon,
+  required Color backgroundColor,
+}) {
+  return Container(
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      border: Border.all(
+        color: Colors.white,
+        width: 2.0,
+      ),
+    ),
+    child: Container(
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.transparent,
+      ),
+      child: IconButton(
+        onPressed: onPressed,
+        icon: Icon(
+          icon,
+          color: Colors.white,
+        ),
+      ),
+    ),
+  );
 }

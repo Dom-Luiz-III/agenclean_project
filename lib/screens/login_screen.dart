@@ -30,7 +30,7 @@ class SignInPage extends StatelessWidget {
     final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     return Scaffold(
-        backgroundColor: corEscura,
+        backgroundColor: cordeFundo1,
         body: Center(
             child: isSmallScreen
                 ? const Column(
