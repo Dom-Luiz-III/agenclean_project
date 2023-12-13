@@ -13,8 +13,7 @@ class OnboardingPage extends StatelessWidget {
           title: 'Segurança, conforto e praticidade',
           description:
               'Como prestadora, encontre clientes mais próximos da sua região!',
-          imageUrl:
-              'https://i.ibb.co/RP9ypRc/conforto.png',
+          imageUrl: 'https://i.ibb.co/RP9ypRc/conforto.png',
           bgColor: azulPrimario,
         ),
         OnboardingPageModel(
@@ -167,7 +166,7 @@ class _OnboardingPageState extends State<OnboardingPagePresenter> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
+                            builder: (context) => LoginPage(),
                           ),
                         );
                       },
@@ -193,7 +192,7 @@ class _OnboardingPageState extends State<OnboardingPagePresenter> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const LoginScreen(),
+                                  builder: (context) => LoginPage(),
                                 ),
                               );
                             },
