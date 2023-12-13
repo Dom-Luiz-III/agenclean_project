@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import '/screens/register_screen.dart';
+import 'package:agenclean_project/constants.dart';
 import '/screens/forget_password.dart';
 import '/screens/home.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   void _loginUser(BuildContext context) async {
     try {
+      print('Email: ${emailController.text.trim()}');
+      print('Password: ${passwordController.text}');
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
+        email: emailController.text.trim(),
         password: passwordController.text,
       );
       Navigator.push(
@@ -27,55 +35,263 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text('Login'),
+      body: SignInPage(
+        emailController: emailController,
+        passwordController: passwordController,
+        loginUser: _loginUser,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+    );
+  }
+}
+
+class SignInPage extends StatelessWidget {
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final Function(BuildContext) loginUser;
+
+  const SignInPage({
+    Key? key,
+    required this.emailController,
+    required this.passwordController,
+    required this.loginUser,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
+
+    return Scaffold(
+      backgroundColor: corEscura,
+      body: Center(
+        child: isSmallScreen
+            ? Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _Logo(),
+                  _FormContent(
+                    emailController: emailController,
+                    passwordController: passwordController,
+                    loginUser: loginUser,
+                  )
+                ],
+              )
+            : Container(
+                padding: const EdgeInsets.all(32.0),
+                constraints: const BoxConstraints(maxWidth: 800),
+                child: Row(
+                  children: [
+                    Expanded(child: _Logo()),
+                    Expanded(
+                      child: Center(
+                        child: _FormContent(
+                          emailController: emailController,
+                          passwordController: passwordController,
+                          loginUser: loginUser,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+      ),
+    );
+  }
+}
+
+class _Logo extends StatelessWidget {
+  const _Logo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Transform.scale(
+          scale: 0.7,
+          child: logoImage,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(
+            "Entre com a sua conta",
+            textAlign: TextAlign.center,
+            style: isSmallScreen
+                ? Theme.of(context)
+                    .textTheme
+                    .headlineSmall
+                    ?.copyWith(color: Colors.white)
+                : Theme.of(context)
+                    .textTheme
+                    .headlineMedium
+                    ?.copyWith(color: Colors.white),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class _FormContent extends StatefulWidget {
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final Function(BuildContext) loginUser;
+
+  const _FormContent({
+    Key? key,
+    required this.emailController,
+    required this.passwordController,
+    required this.loginUser,
+  }) : super(key: key);
+
+  @override
+  _FormContentState createState() => _FormContentState();
+}
+
+class _FormContentState extends State<_FormContent> {
+  bool _isPasswordVisible = false;
+  bool _rememberMe = false;
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
+
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 300),
+      child: Form(
+        key: _formKey,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
-              controller: emailController,
+            TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Preencha este campo';
+                }
+                if (!RegExp(
+                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+$")
+                    .hasMatch(value)) {
+                  return 'Por favor, coloque um email válido';
+                }
+                return null;
+              },
               decoration: const InputDecoration(
                 labelText: 'Email',
+                hintText: 'Digite seu email',
+                prefixIcon: Icon(Icons.email_outlined, color: Colors.white),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                labelStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white),
+              ),
+              style: const TextStyle(color: Colors.white),
+              controller: widget.emailController,
+            ),
+            _gap(),
+            TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Preencha este campo';
+                }
+
+                if (value.length < 6) {
+                  return 'A senha deve ter no mínimo 6 caracteres';
+                }
+                return null;
+              },
+              obscureText: !_isPasswordVisible,
+              decoration: InputDecoration(
+                labelText: 'Senha',
+                hintText: 'Coloque a sua senha',
+                prefixIcon:
+                    const Icon(Icons.lock_outline_rounded, color: Colors.white),
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                labelStyle: const TextStyle(color: Colors.white),
+                hintStyle: const TextStyle(color: Colors.white),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                      _isPasswordVisible
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      color: Colors.white),
+                  onPressed: () {
+                    setState(() {
+                      _isPasswordVisible = !_isPasswordVisible;
+                    });
+                  },
+                ),
+              ),
+              style: const TextStyle(color: Colors.white),
+              controller: widget.passwordController,
+            ),
+            _gap(),
+            CheckboxListTile(
+              value: _rememberMe,
+              onChanged: (value) {
+                if (value == null) return;
+                setState(() {
+                  _rememberMe = value;
+                });
+              },
+              title: const Text('Lembrar senha',
+                  style: TextStyle(color: Colors.white)),
+              controlAffinity: ListTileControlAffinity.leading,
+              dense: true,
+              contentPadding: const EdgeInsets.all(0),
+              activeColor: laranjaPrimario,
+            ),
+            _gap(),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  backgroundColor: laranjaPrimario, // Cor da caixa
+                  foregroundColor: corBranca, // Cor do texto
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    'Entrar',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  if (_formKey.currentState?.validate() ?? false) {
+                    widget.loginUser(context);
+                  }
+                },
               ),
             ),
-            TextField(
-              controller: passwordController,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-              ),
-              obscureText: true,
-            ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () => _loginUser(context),
-              child: const Text('Login'),
-            ),
-            const SizedBox(height: 16.0),
             TextButton(
               onPressed: () {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()),
-                );
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ForgetPasswordPage()));
               },
-              child: const Text("Você ainda não tem uma conta? Clique aqui."),
-            ),
-            const SizedBox(height: 16.0),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ForgetPasswordPage()),
-                );
-              },
-              child: const Text('Esqueceu sua senha? Clique aqui.'),
+              child: Text(
+                'Realizar Cadastro',
+                style: TextStyle(color: laranjaPrimario),
+              ),
             ),
           ],
         ),
       ),
     );
   }
+
+  Widget _gap() => const SizedBox(height: 16);
 }

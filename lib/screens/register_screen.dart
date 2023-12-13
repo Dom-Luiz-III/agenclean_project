@@ -13,8 +13,8 @@ class RegisterPage extends StatelessWidget {
     try {
       // ignore: unused_local_variable
       UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text,
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
         password: passwordController.text,
       );
     } catch (e) {
@@ -56,7 +56,7 @@ class RegisterPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(builder: (context) => ForgetPasswordPage()),
                 );
               },
               child: const Text('Você possui uma conta? Click aqui'),

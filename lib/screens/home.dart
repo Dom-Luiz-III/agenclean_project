@@ -115,7 +115,7 @@ class _GoogleBottomBarState extends State<Home> {
                       // Navegar para a tela de login
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        MaterialPageRoute(builder: (context) => LoginPage()),
                       );
                     },
                     leading: Icon(iconData),
