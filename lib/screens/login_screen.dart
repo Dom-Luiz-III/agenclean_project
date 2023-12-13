@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => RegisterPage()),
                 );
               },
-              child: const Text("You don't have a account yet?"),
+              child: const Text("Você ainda não tem uma conta? Clique aqui."),
             ),
             const SizedBox(height: 16.0),
             TextButton(
@@ -71,7 +71,7 @@ class LoginPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => ForgetPasswordPage()),
                 );
               },
-              child: const Text('Forgot your password?'),
+              child: const Text('Esqueceu sua senha? Clique aqui.'),
             ),
           ],
         ),
