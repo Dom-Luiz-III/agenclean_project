@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:agenclean_project/screens/login_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -66,51 +67,125 @@ class _GoogleBottomBarState extends State<Home> {
     );
   }
 
+  //Widget onde mostra o menu de opções na direita da tela home e o que ele faz após clicar
   Widget _drawer() => Drawer(
         child: ListView(
-          children: _menuItems
-              .map((item) => ListTile(
+          children: <Widget>[
+            Column(
+              children: _menuItems.map((item) {
+                IconData iconData = Icons.person;
+                if (item == 'Favoritos') {
+                  iconData = Icons.favorite;
+                  return ListTile(
                     onTap: () {
                       _scaffoldKey.currentState?.openEndDrawer();
+                      // Lógica para lidar com a ação do item "Favoritos"
+                      print('test Favoritos');
                     },
+                    leading: Icon(iconData),
                     title: Text(item),
-                  ))
-              .toList(),
+                  );
+                } else if (item == 'Trocar conta') {
+                  iconData = Icons.switch_account;
+                  return ListTile(
+                    onTap: () {
+                      _scaffoldKey.currentState?.openEndDrawer();
+                      // Lógica para lidar com a ação do item "Favoritos"
+                      print('test Favoritos');
+                    },
+                    leading: Icon(iconData),
+                    title: Text(item),
+                  );
+                } else if (item == 'Configurações') {
+                  iconData = Icons.settings;
+                  return ListTile(
+                    onTap: () {
+                      _scaffoldKey.currentState?.openEndDrawer();
+                      // Lógica para lidar com a ação do item "Configurações"
+                      print('test Configurações');
+                    },
+                    leading: Icon(iconData),
+                    title: Text(item),
+                  );
+                } else if (item == 'Sair') {
+                  iconData = Icons.exit_to_app;
+                  return ListTile(
+                    onTap: () {
+                      _scaffoldKey.currentState?.openEndDrawer();
+                      // Navegar para a tela de login
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      );
+                    },
+                    leading: Icon(iconData),
+                    title: Text(item),
+                  );
+                }
+
+                return ListTile(
+                  onTap: () {
+                    _scaffoldKey.currentState?.openEndDrawer();
+                  },
+                  leading: Icon(iconData),
+                  title: Text(item),
+                );
+              }).toList(),
+            ),
+            const Divider(),
+            ListTile(
+              onTap: () {
+                // Lógica para lidar com a ação do item "Suporte e Termos de Uso"
+                print('test Suporte e Termos de Uso');
+              },
+              leading: const Icon(Icons.help),
+              title: const Text("Suporte e Termos de Uso"),
+            ),
+            ListTile(
+              onTap: () {
+                // Lógica para lidar com a ação do item "Sobre Nós"
+                print('test Sobre Nós');
+              },
+              leading: const Icon(Icons.info),
+              title: const Text("Sobre Nós"),
+            ),
+          ],
         ),
       );
 
   final _navBarItems = [
     SalomonBottomBarItem(
       icon: const Icon(Icons.home),
-      title: const Text("Home"),
+      title: const Text("Inicio"),
       selectedColor: Colors.blue[50],
     ),
     SalomonBottomBarItem(
       icon: const Icon(Icons.search),
-      title: const Text("Search"),
+      title: const Text("Pesquisar"),
       selectedColor: Colors.blue[50],
     ),
     SalomonBottomBarItem(
       icon: const Icon(Icons.add_circle_outlined),
-      title: const Text("Likes"),
+      title: const Text("Adicionar"),
       selectedColor: Colors.blue[50],
     ),
     SalomonBottomBarItem(
       icon: const Icon(Icons.chat),
       title: const Text("Chat"),
-      selectedColor: Colors.blue,
+      selectedColor: Colors.blue[50],
     ),
     SalomonBottomBarItem(
       icon: const Icon(Icons.person),
-      title: const Text("Profile"),
+      title: const Text("Perfil"),
       selectedColor: Colors.blue[50],
     ),
   ];
 
   final List<String> _menuItems = <String>[
-    'About',
-    'Contact',
-    'Settings',
-    'Sign Out',
+    'Perfil',
+    'Favoritos',
+    'Trocar conta',
+    'Configurações',
+    'Sair',
   ];
 }
