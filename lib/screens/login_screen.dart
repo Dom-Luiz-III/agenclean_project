@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:agenclean_project/constants.dart';
-import '/screens/forget_password.dart';
+import 'package:agenclean_project/screens/register_screen.dart';
 import '/screens/home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -280,7 +280,7 @@ class _FormContentState extends State<_FormContent> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ForgetPasswordPage()));
+                        builder: (context) => RegisterPage()));
               },
               child: Text(
                 'Realizar Cadastro',

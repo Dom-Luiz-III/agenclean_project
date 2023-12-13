@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import '/screens/login_screen.dart';
 import '/screens/forget_password.dart';
 
 // ignore: use_key_in_widget_constructors

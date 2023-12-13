@@ -29,6 +29,30 @@ class _GoogleBottomBarState extends State<Home> {
   int _selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  // Aqui ficará o painel que aparece após clicar nos botões de Pesquisar, Chat e etc. Isso é apenas uma versão inicial
+  final List<Widget> _pageWidgets = [
+    // Conteúdo para o item "Inicio"
+    Center(
+      child: Text("Página Inicial test"),
+    ),
+    // Conteúdo para o item "Pesquisar"
+    Center(
+      child: Text("Pesquisar test"),
+    ),
+    // Conteúdo para o item "Adicionar"
+    Center(
+      child: Text("Adicionar test"),
+    ),
+    // Conteúdo para o item "Chat"
+    Center(
+      child: Text("Chat test"),
+    ),
+    // Conteúdo para o item "Perfil"
+    Center(
+      child: Text("Perfil test"),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,9 +73,9 @@ class _GoogleBottomBarState extends State<Home> {
         ],
       ),
       endDrawer: _drawer(), // Abre o menu na lateral direita
-      body: Center(
-        child: _navBarItems[_selectedIndex].title,
-      ),
+      body: _pageWidgets[
+          _selectedIndex], // Mostra o conteúdo correspondente ao item selecionado
+
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _selectedIndex,
         selectedItemColor: const Color(0xff6200ee),
