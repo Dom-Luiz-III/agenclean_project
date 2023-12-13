@@ -27,7 +27,7 @@ class RegisterPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Register'),
+        title: const Text('Registrar'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -49,7 +49,7 @@ class RegisterPage extends StatelessWidget {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () => _registerUser(context),
-              child: const Text('Register'),
+              child: const Text('Registrar'),
             ),
             const SizedBox(height: 16.0),
             TextButton(
