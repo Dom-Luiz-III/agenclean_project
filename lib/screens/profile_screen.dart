@@ -13,7 +13,7 @@ class _TopPortion extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(bottom: 80),
           decoration: BoxDecoration(
-            color: azulPrimario,
+            color: cordeFundo2,
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
@@ -58,7 +58,6 @@ class _TopPortion extends StatelessWidget {
                           /*FirebaseAuth.instance.currentUser!.displayName ??*/ 'Nome do Usuário',
                           style: TextStyle(fontSize: 18.0, color: Colors.white),
                         ),
-                        // Adicione outros elementos de texto conforme necessário
                       ],
                     ),
                   ),
@@ -72,6 +71,7 @@ class _TopPortion extends StatelessWidget {
   }
 }
 
+// corpo do perfil
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -87,51 +87,209 @@ class ProfilePage extends StatelessWidget {
           const Expanded(flex: 1, child: _TopPortion()),
           Expanded(
             flex: 3,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 10),
-                  // texto da descrição
-                  Container(
-                    constraints: const BoxConstraints(maxWidth: 450),
-                    child: const Text(
-                      userDescription,
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(fontSize: 16.0, color: Colors.white),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 10),
+                    // texto da descrição
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 450),
+                      child: const Text(
+                        userDescription,
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(fontSize: 16.0, color: Colors.white),
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  // "botões de habilidades", "editar perfil" e "extra"
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _customFloatingActionButton(
-                        onPressed: () {},
-                        heroTag: 'abilities',
-                        label: "Habilidades",
-                        backgroundColor: azulSecundario, // Cor do botão
+                    const SizedBox(height: 10),
+                    // "botões de habilidades", "editar perfil" e "extra"
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _customFloatingActionButton(
+                          onPressed: () {},
+                          heroTag: 'abilities',
+                          label: "Habilidades",
+                          backgroundColor: azulSecundario, // Cor do botão
+                        ),
+                        const SizedBox(
+                            width: 10.0), // espaçamento entre os botões
+                        _customFloatingActionButton(
+                          onPressed: () {},
+                          heroTag: 'edit',
+                          label: "Editar Perfil",
+                          backgroundColor: azulPrimario, // Cor do botão
+                        ),
+                        const SizedBox(
+                            width: 10.0), // espaçamento entre os botões
+                        _customCircularButton(
+                          onPressed: () {},
+                          icon: Icons.more_horiz,
+                          backgroundColor: Colors.white,
+                        ),
+                      ],
+                    ),
+                    // Linha divisoria
+                    const SizedBox(height: 10),
+                    Divider(
+                      color: cordeFundo2,
+                      thickness: 4.0,
+                      indent: 0, // Espaçamento à esquerda do Divider
+                      endIndent: 0, // Espaçamento à direita do Divider
+                    ),
+                    // Área de competências
+                    const SizedBox(height: 20),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Competências",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            SizedBox(height: 10),
+                            Text("Serviços: Diarista, Cozinheira, Cuidadora",
+                                style: TextStyle(color: Colors.white)),
+                            Text("Trabalha como diarista há: 8 anos",
+                                style: TextStyle(color: Colors.white)),
+                            Text("Disponível para trabalhar em: Tempo Integral",
+                                style: TextStyle(color: Colors.white)),
+                          ],
+                        ),
                       ),
-                      const SizedBox(
-                          width: 10.0), // espaçamento entre os botões
-                      _customFloatingActionButton(
-                        onPressed: () {},
-                        heroTag: 'edit',
-                        label: "Editar Perfil",
-                        backgroundColor: azulPrimario, // Cor do botão
+                    ),
+                    const SizedBox(height: 20),
+                    // Linha divisoria
+                    Divider(
+                      color: cordeFundo2,
+                      thickness: 4.0,
+                      indent: 0, // Espaçamento à esquerda do Divider
+                      endIndent: 0, // Espaçamento à direita do Divider
+                    ),
+                    const SizedBox(height: 20),
+                    // Área de Informações
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Informações",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.calendar_today,
+                                color: Colors.white,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                "50 anos",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.location_on,
+                                color: Colors.white,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                "Queimadinha\nFeira de Santana / BA",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.check_circle,
+                                color: Colors.white,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                "+ 50 Serviços Prestados",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                          width: 10.0), // espaçamento entre os botões
-                      _customCircularButton(
-                        onPressed: () {},
-                        icon: Icons.more_horiz,
-                        backgroundColor: Colors.green,
+                    ),
+                    const SizedBox(height: 20),
+                    // Linha divisoria
+                    Divider(
+                      color: cordeFundo2,
+                      thickness: 4.0,
+                      indent: 0, // Espaçamento à esquerda do Divider
+                      endIndent: 0, // Espaçamento à direita do Divider
+                    ),
+                    // Área de Recomendação
+                    Container(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 20),
+                          const Text(
+                            'Área de Recomendações',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          _buildRecommendationBox(
+                            name: 'Marcos Augusto', // '$name'
+                            rating: '4.5/5.0', // '$rating'
+                            ratingDescription:
+                                'Muito boa cozinheira, faz uma limpeza incrível, RECOMENDO!', // '$ratingDescription'
+                          ),
+                          const SizedBox(height: 10),
+                          _buildRecommendationBox(
+                            name: 'Ana Silva',
+                            rating: '5.0/5.0',
+                            ratingDescription:
+                                'Excelente profissional, sempre pontual e prestativa.',
+                          ),
+                          const SizedBox(height: 10),
+                          _buildRecommendationBox(
+                            name: 'Júlia Santos',
+                            rating: '4.8/5.0',
+                            ratingDescription:
+                                'Ótima diarista, realiza um trabalho impecável.',
+                          ),
+                          const SizedBox(height: 10),
+                          _buildRecommendationBox(
+                            name: 'Carlos Oliveira',
+                            rating: '4.2/5.0',
+                            ratingDescription:
+                                'Cuidadora dedicada e atenciosa. Recomendo seus serviços.',
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -141,7 +299,7 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-// costumizador para botões de "habilidades" e "editar perfil"
+// função de costumizador para botões de "habilidades" e "editar perfil"
 Widget _customFloatingActionButton({
   required VoidCallback onPressed,
   required String heroTag,
@@ -171,7 +329,7 @@ Widget _customFloatingActionButton({
   );
 }
 
-// customizador para o botão circular
+// função de customizador para o botão circular
 Widget _customCircularButton({
   required VoidCallback onPressed,
   required IconData icon,
@@ -197,6 +355,55 @@ Widget _customCircularButton({
           color: Colors.white,
         ),
       ),
+    ),
+  );
+}
+
+// função para área de recomendação
+Widget _buildRecommendationBox({
+  required String name,
+  required String rating,
+  required String ratingDescription,
+}) {
+  return Container(
+    decoration: BoxDecoration(
+      color: Colors.grey[800],
+      borderRadius: BorderRadius.circular(8),
+    ),
+    padding: const EdgeInsets.all(10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              name,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Nota: $rating',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Text(
+          ratingDescription,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+          ),
+        ),
+      ],
     ),
   );
 }
