@@ -1,61 +1,102 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:agenclean_project/constants.dart';
-import 'package:agenclean_project/screens/home.dart';
 import 'package:agenclean_project/screens/register_screen.dart';
+import '/screens/home.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-//Painel de login é chamado aqui
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  void _loginUser(BuildContext context) async {
+    try {
+      print('Email: ${emailController.text.trim()}');
+      print('Password: ${passwordController.text}');
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text,
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Home()),
+      );
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SignInPage(),
+    return Scaffold(
+      body: SignInPage(
+        emailController: emailController,
+        passwordController: passwordController,
+        loginUser: _loginUser,
+      ),
     );
   }
 }
 
-//Classe onde está o painel de login
 class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final Function(BuildContext) loginUser;
+
+  const SignInPage({
+    Key? key,
+    required this.emailController,
+    required this.passwordController,
+    required this.loginUser,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
-
-    return Scaffold(
-        backgroundColor: cordeFundo1,
-        body: Center(
-            child: isSmallScreen
-                ? const Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      _Logo(),
-                      _FormContent(),
-                    ],
+    
+      backgroundColor: cordeFundo1,
+      body: Center(
+        child: isSmallScreen
+            ? Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _Logo(),
+                  _FormContent(
+                    emailController: emailController,
+                    passwordController: passwordController,
+                    loginUser: loginUser,
                   )
-                : Container(
-                    padding: const EdgeInsets.all(32.0),
-                    constraints: const BoxConstraints(maxWidth: 800),
-                    child: const Row(
-                      children: [
-                        Expanded(child: _Logo()),
-                        Expanded(
-                          child: Center(child: _FormContent()),
+                ],
+              )
+            : Container(
+                padding: const EdgeInsets.all(32.0),
+                constraints: const BoxConstraints(maxWidth: 800),
+                child: Row(
+                  children: [
+                    Expanded(child: _Logo()),
+                    Expanded(
+                      child: Center(
+                        child: _FormContent(
+                          emailController: emailController,
+                          passwordController: passwordController,
+                          loginUser: loginUser,
                         ),
-                      ],
+                      ),
                     ),
-                  )));
+                  ],
+                ),
+              ),
+      ),
+    );
   }
 }
 
-//Essa classe é onde a logo junto com o texto abaixo dela
 class _Logo extends StatelessWidget {
   const _Logo({Key? key}) : super(key: key);
 
@@ -92,14 +133,22 @@ class _Logo extends StatelessWidget {
 }
 
 class _FormContent extends StatefulWidget {
-  const _FormContent({Key? key}) : super(key: key);
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final Function(BuildContext) loginUser;
+
+  const _FormContent({
+    Key? key,
+    required this.emailController,
+    required this.passwordController,
+    required this.loginUser,
+  }) : super(key: key);
 
   @override
-  State<_FormContent> createState() => __FormContentState();
+  _FormContentState createState() => _FormContentState();
 }
 
-//Classe onde ocorre o tratamento de envios do email e senha, além do design
-class __FormContentState extends State<_FormContent> {
+class _FormContentState extends State<_FormContent> {
   bool _isPasswordVisible = false;
   bool _rememberMe = false;
 
@@ -107,6 +156,8 @@ class __FormContentState extends State<_FormContent> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
+
     return Container(
       constraints: const BoxConstraints(maxWidth: 300),
       child: Form(
@@ -117,15 +168,12 @@ class __FormContentState extends State<_FormContent> {
           children: [
             TextFormField(
               validator: (value) {
-                // add email validation
                 if (value == null || value.isEmpty) {
                   return 'Preencha este campo';
                 }
-
-                bool emailValid = RegExp(
-                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                    .hasMatch(value);
-                if (!emailValid) {
+                if (!RegExp(
+                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+$")
+                    .hasMatch(value)) {
                   return 'Por favor, coloque um email válido';
                 }
                 return null;
@@ -141,6 +189,7 @@ class __FormContentState extends State<_FormContent> {
                 hintStyle: TextStyle(color: Colors.white),
               ),
               style: const TextStyle(color: Colors.white),
+              controller: widget.emailController,
             ),
             _gap(),
             TextFormField(
@@ -179,6 +228,7 @@ class __FormContentState extends State<_FormContent> {
                 ),
               ),
               style: const TextStyle(color: Colors.white),
+              controller: widget.passwordController,
             ),
             _gap(),
             CheckboxListTile(
@@ -219,21 +269,17 @@ class __FormContentState extends State<_FormContent> {
                 ),
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
-                    /// do something
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Home(),
-                      ),
-                    );
+                    widget.loginUser(context);
                   }
                 },
               ),
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegisterScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RegisterPage()));
               },
               child: Text(
                 'Realizar Cadastro',
