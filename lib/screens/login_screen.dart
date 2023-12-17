@@ -59,7 +59,8 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
-    
+
+    return Scaffold(
       backgroundColor: cordeFundo1,
       body: Center(
         child: isSmallScreen
