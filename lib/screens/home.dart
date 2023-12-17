@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:agenclean_project/constants.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:agenclean_project/screens/login_screen.dart';
 
@@ -57,7 +58,7 @@ class _GoogleBottomBarState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: const Color(0xFF22272B),
+      backgroundColor: cordeFundo1,
       appBar: AppBar(
         title: const Text(
           'AGENCLEAN contratante',
