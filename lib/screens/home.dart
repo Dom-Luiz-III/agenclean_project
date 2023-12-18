@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:agenclean_project/screens/login_screen.dart';
+import 'package:agenclean_project/pages/home_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -43,10 +44,12 @@ class _GoogleBottomBarState extends State<Home> {
     Center(
       child: Text("Adicionar test"),
     ),
-    // Conteúdo para o item "Chat"
+
+    //chat botao
     Center(
-      child: Text("Chat test"),
+      child: Text("adicionar chat"),
     ),
+
     // Conteúdo para o item "Perfil"
     Center(
       child: Text("Perfil test"),
@@ -84,6 +87,42 @@ class _GoogleBottomBarState extends State<Home> {
           setState(() {
             _selectedIndex = index;
           });
+
+          // Navegação para páginas diferentes com base no índice clicado
+          switch (index) {
+            case 0:
+              //Navigator.pushReplacement(
+              //context,
+              //MaterialPageRoute(builder: (context) => Home()),
+              //);
+              break;
+            case 1:
+              //Navigator.pushReplacement(
+              //context,
+              //MaterialPageRoute(builder: (context) => PesquisarPage()),
+              //);
+              break;
+            case 2:
+              //Navigator.pushReplacement(
+              //context,
+              //MaterialPageRoute(builder: (context) => AdicionarPage()),);
+              break;
+            case 3:
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
+              break;
+            case 4:
+              //Navigator.pushReplacement(
+              //context,
+              // MaterialPageRoute(builder: (context) => PerfilPage()),
+              // );
+              break;
+            default:
+              // Lidar com outros casos, se necessário
+              break;
+          }
         },
         items: _navBarItems,
         backgroundColor: Colors.orange[900],

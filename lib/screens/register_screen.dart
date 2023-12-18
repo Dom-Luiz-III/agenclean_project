@@ -11,10 +11,11 @@ class RegisterPage extends StatelessWidget {
     try {
       // ignore: unused_local_variable
       UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text,
       );
+      print('Usuário registrado com sucesso!');
     } catch (e) {
       print('Error: $e');
     }
