@@ -129,11 +129,11 @@ class _GoogleBottomBarState extends State<Home> {
                     onTap: () {
                       _scaffoldKey.currentState?.openEndDrawer();
                       // Lógica para lidar com a ação do item "Perfil"
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => const _TopPortion()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ProfilePage()),
+                      );
                     },
                     leading: Icon(iconData),
                     title: Text(item),
