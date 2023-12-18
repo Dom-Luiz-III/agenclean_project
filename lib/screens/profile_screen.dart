@@ -79,7 +79,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const String userDescription =
-    "Valores padrão da diária: \\\$90,00 a \\\$150,00.\n\nAlteração do valor a depender do tamanho da residência.\n\nTaxa de transporte deve ser pago a parte";
+    "Valores padrão da diária: \$90,00 a \$150,00.\n\nAlteração do valor a depender do tamanho da residência.\n\nTaxa de transporte deve ser pago a parte";
 
     return Scaffold(
       backgroundColor: cordeFundo1,
