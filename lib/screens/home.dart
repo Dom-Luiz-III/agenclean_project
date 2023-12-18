@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:agenclean_project/constants.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:agenclean_project/screens/login_screen.dart';
+import 'package:agenclean_project/screens/settings_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -127,7 +128,10 @@ class _GoogleBottomBarState extends State<Home> {
                     onTap: () {
                       _scaffoldKey.currentState?.openEndDrawer();
                       // Lógica para lidar com a ação do item "Configurações"
-                      print('test Configurações');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const PaginaConfiguracoes()),
+                      );
                     },
                     leading: Icon(iconData),
                     title: Text(item),
