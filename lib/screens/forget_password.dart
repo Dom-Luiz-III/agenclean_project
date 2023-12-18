@@ -40,7 +40,7 @@ class ForgetPasswordPage extends StatelessWidget {
                 labelStyle: TextStyle(color: Colors.white),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
