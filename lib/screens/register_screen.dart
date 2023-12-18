@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '/screens/login_screen.dart';
 import '/screens/forget_password.dart';
 
 // ignore: use_key_in_widget_constructors
@@ -11,8 +13,8 @@ class RegisterPage extends StatelessWidget {
     try {
       // ignore: unused_local_variable
       UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
         password: passwordController.text,
       );
     } catch (e) {
@@ -54,7 +56,7 @@ class RegisterPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ForgetPasswordPage()),
+                  MaterialPageRoute(builder: (context) => LoginPage()),
                 );
               },
               child: const Text('Você possui uma conta? Click aqui'),
