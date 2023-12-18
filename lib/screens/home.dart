@@ -1,24 +1,9 @@
+import 'package:agenclean_project/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:agenclean_project/constants.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:agenclean_project/screens/login_screen.dart';
 import 'package:agenclean_project/screens/settings_page.dart';
-
-void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Home(),
-    );
-  }
-}
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -33,10 +18,77 @@ class _GoogleBottomBarState extends State<Home> {
 
   // Aqui ficará o painel que aparece após clicar nos botões de Pesquisar, Chat e etc. Isso é apenas uma versão inicial
   final List<Widget> _pageWidgets = [
-    // Conteúdo para o item "Inicio"
-    Center(
-      child: Text("Página Inicial test"),
+    Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: NetworkImage(
+                    'https://media.istockphoto.com/id/1049317672/pt/foto/indian-girl-with-phone.jpg?s=2048x2048&w=is&k=20&c=rq-cjjqr6aOUAmCOepQ32hlPoPiH9xORR7_XSpFWb0M='),
+              ),
+              SizedBox(width: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Nome do Usuário',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(Icons.star, color: Colors.yellow),
+                      Text(
+                        '4.5/5.0',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(height: 20),
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              constraints: BoxConstraints(maxWidth: 200),
+              child: Text(
+                'Profissionais próximos disponíveis',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          // Linha divisoria
+          Divider(
+            color: corBranca,
+            thickness: 2.0,
+            indent: 0, // Espaçamento à esquerda do Divider
+            endIndent: 0, // Espaçamento à direita do Divider
+          ),
+          const SizedBox(height: 20),
+        ],
+      ),
     ),
+
     // Conteúdo para o item "Pesquisar"
     Center(
       child: Text("Pesquisar test"),
@@ -50,9 +102,7 @@ class _GoogleBottomBarState extends State<Home> {
       child: Text("Chat test"),
     ),
     // Conteúdo para o item "Perfil"
-    Center(
-      child: Text("Perfil test"),
-    ),
+    ProfilePage(),
   ];
 
   @override
@@ -61,9 +111,17 @@ class _GoogleBottomBarState extends State<Home> {
       key: _scaffoldKey,
       backgroundColor: cordeFundo1,
       appBar: AppBar(
-        title: const Text(
-          'AGENCLEAN contratante',
-          style: TextStyle(color: Colors.white),
+        leading: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 25.0),
+              child: Image.network(
+                'https://i.ibb.co/VmXK0gC/home-logo.png',
+                width: 100,
+                height: 56,
+              ),
+            ),
+          ],
         ),
         backgroundColor: const Color(0xFF22272B),
         automaticallyImplyLeading: false,
@@ -130,7 +188,8 @@ class _GoogleBottomBarState extends State<Home> {
                       // Lógica para lidar com a ação do item "Configurações"
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const PaginaConfiguracoes()),
+                        MaterialPageRoute(
+                            builder: (context) => const PaginaConfiguracoes()),
                       );
                     },
                     leading: Icon(iconData),
