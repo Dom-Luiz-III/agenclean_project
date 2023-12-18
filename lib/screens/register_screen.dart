@@ -26,9 +26,9 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: corEscura,
+      backgroundColor: cordeFundo1,
       appBar: AppBar(
-        backgroundColor: corEscura,
+        backgroundColor: cordeFundo1,
         automaticallyImplyLeading: false,
         title: const Text('Registrar Conta'),
       ),

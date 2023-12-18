@@ -3,6 +3,7 @@ import 'package:agenclean_project/constants.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:agenclean_project/screens/login_screen.dart';
 import 'package:agenclean_project/screens/settings_page.dart';
+import 'package:agenclean_project/screens/profile_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -122,6 +123,21 @@ class _GoogleBottomBarState extends State<Home> {
                     leading: Icon(iconData),
                     title: Text(item),
                   );
+                } else if (item == 'Perfil') {
+                  iconData = Icons.switch_account;
+                  return ListTile(
+                    onTap: () {
+                      _scaffoldKey.currentState?.openEndDrawer();
+                      // Lógica para lidar com a ação do item "Perfil"
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //       builder: (context) => const _TopPortion()),
+                      // );
+                    },
+                    leading: Icon(iconData),
+                    title: Text(item),
+                  );
                 } else if (item == 'Configurações') {
                   iconData = Icons.settings;
                   return ListTile(
@@ -130,7 +146,8 @@ class _GoogleBottomBarState extends State<Home> {
                       // Lógica para lidar com a ação do item "Configurações"
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const PaginaConfiguracoes()),
+                        MaterialPageRoute(
+                            builder: (context) => const PaginaConfiguracoes()),
                       );
                     },
                     leading: Icon(iconData),

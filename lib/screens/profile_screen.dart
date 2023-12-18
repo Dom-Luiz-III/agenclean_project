@@ -2,6 +2,7 @@ import 'package:agenclean_project/constants.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
+//Deixei o TopPortion como público só pra testar a home 
 class _TopPortion extends StatelessWidget {
   const _TopPortion({Key? key}) : super(key: key);
 
