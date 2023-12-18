@@ -2,6 +2,7 @@ import 'package:agenclean_project/constants.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
+//Deixei o TopPortion como público só pra testar a home
 class _TopPortion extends StatelessWidget {
   const _TopPortion({Key? key}) : super(key: key);
 
@@ -55,7 +56,7 @@ class _TopPortion extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          /*FirebaseAuth.instance.currentUser!.displayName ??*/ 'Nome do Usuário',
+                          /*FirebaseAuth.instance.currentUser!.displayName ??*/ 'Paula Ferreira Silva',
                           style: TextStyle(fontSize: 18.0, color: Colors.white),
                         ),
                       ],
@@ -73,12 +74,12 @@ class _TopPortion extends StatelessWidget {
 
 // corpo do perfil
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     const String userDescription =
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    "Valores padrão da diária: \\\$90,00 a \\\$150,00.\n\nAlteração do valor a depender do tamanho da residência.\n\nTaxa de transporte deve ser pago a parte";
 
     return Scaffold(
       backgroundColor: cordeFundo1,
@@ -113,18 +114,16 @@ class ProfilePage extends StatelessWidget {
                           onPressed: () {},
                           heroTag: 'abilities',
                           label: "Habilidades",
-                          backgroundColor: azulSecundario, // Cor do botão
+                          backgroundColor: azulSecundario,
                         ),
-                        const SizedBox(
-                            width: 10.0), // espaçamento entre os botões
+                        const SizedBox(width: 0.5), // Reduzi o espaçamento aqui
                         _customFloatingActionButton(
                           onPressed: () {},
                           heroTag: 'edit',
                           label: "Editar Perfil",
-                          backgroundColor: azulPrimario, // Cor do botão
+                          backgroundColor: azulPrimario,
                         ),
-                        const SizedBox(
-                            width: 10.0), // espaçamento entre os botões
+                        const SizedBox(width: 0.5), // Reduzi o espaçamento aqui
                         _customCircularButton(
                           onPressed: () {},
                           icon: Icons.more_horiz,
@@ -133,7 +132,7 @@ class ProfilePage extends StatelessWidget {
                       ],
                     ),
                     // Linha divisoria
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 15),
                     Divider(
                       color: cordeFundo2,
                       thickness: 4.0,
