@@ -7,7 +7,7 @@ Color azulPrimario = const Color(0xFF01264E);
 Color azulSecundario = const Color(0xFF5D93F8);
 Color cordeFundo1 = const Color(0xFF22272B);
 Color cordeFundo2 = const Color(0xFF161C21);
-Color corMaisEscura = const Color.fromARGB(255, 19, 21, 24);
+Color corMaisEscura = Color.fromARGB(255, 45, 51, 58);
 Color corBranca = const Color(0xFFE5E7E9);
 
 //Local para carregar imagens:
