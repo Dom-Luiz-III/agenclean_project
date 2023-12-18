@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "543606157745",
+    "project_id": "agenteste-3a825",
+    "storage_bucket": "agenteste-3a825.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543606157745:android:0c5830255bb0dfaa5d8d90",
+        "android_client_info": {
+          "package_name": "com.example.agenclean_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4IcEKDUliRfseZHUP7sszwodpy08TIDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
