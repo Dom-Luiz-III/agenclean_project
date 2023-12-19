@@ -35,6 +35,7 @@ class ForgetPasswordPage extends StatelessWidget {
           children: [
             TextField(
               controller: emailController,
+              style: TextStyle(color: Colors.white), // Defina a cor do texto para branco
               decoration: const InputDecoration(
                 labelText: 'Email',
                 labelStyle: TextStyle(color: Colors.white),
@@ -43,12 +44,12 @@ class ForgetPasswordPage extends StatelessWidget {
             const SizedBox(height: 16.0),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  backgroundColor: laranjaPrimario,
-                  foregroundColor: corBranca,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
                 ),
+                backgroundColor: laranjaPrimario,
+                foregroundColor: corBranca,
+              ),
               onPressed: () => _resetPassword(context),
               child: const Text('Resetar Senha'),
             ),
@@ -60,7 +61,10 @@ class ForgetPasswordPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const LoginPage()),
                 );
               },
-              child: const Text('Você possui uma conta? Clique aqui!',style: TextStyle(color: Color.fromARGB(255, 241, 109, 0))),
+              child: const Text(
+                'Você possui uma conta? Clique aqui!',
+                style: TextStyle(color: Color.fromARGB(255, 241, 109, 0)),
+              ),
             ),
             const SizedBox(height: 16.0),
             TextButton(
@@ -70,7 +74,10 @@ class ForgetPasswordPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => RegisterPage()),
                 );
               },
-              child: const Text("Você ainda não tem uma conta?",style: TextStyle(color: Color.fromARGB(255, 241, 109, 0))),
+              child: const Text(
+                "Você ainda não tem uma conta?",
+                style: TextStyle(color: Color.fromARGB(255, 241, 109, 0)),
+              ),
             ),
           ],
         ),
