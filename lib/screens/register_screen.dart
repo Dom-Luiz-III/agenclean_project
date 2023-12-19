@@ -168,7 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 selectedAccountType = newValue!;
               });
             },
-            items: <String>['Prestador de Serviço', 'Contrante']
+            items: <String>['Prestador de Serviço', 'Contratante']
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -180,7 +180,7 @@ class _RegisterPageState extends State<RegisterPage> {
             }).toList(),
             decoration: InputDecoration(
               labelText: 'Tipo de conta',
-              labelStyle: TextStyle(color: Colors.white),
+              labelStyle: const TextStyle(color: Colors.white),
               filled: true,
               fillColor: cordeFundo1,
             ),
@@ -201,7 +201,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 color: Colors.white), // Defina a cor do texto para branco
             decoration: InputDecoration(
                 labelText: 'Senha',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: const TextStyle(color: Colors.white),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _isPasswordVisible
@@ -221,7 +221,7 @@ class _RegisterPageState extends State<RegisterPage> {
             style: const TextStyle(color: Colors.white),
             decoration: InputDecoration(
                 labelText: 'Repetir Senha',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: const TextStyle(color: Colors.white),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _isPasswordVisible
