@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,38 +49,20 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDPSRHCL2WvMlWwJjxx7WFNTzXRn05rb8s',
-    appId: '1:543606157745:web:8d1edf76ad197a875d8d90',
-    messagingSenderId: '543606157745',
-    projectId: 'agenteste-3a825',
-    authDomain: 'agenteste-3a825.firebaseapp.com',
-    storageBucket: 'agenteste-3a825.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD4IcEKDUliRfseZHUP7sszwodpy08TIDA',
-    appId: '1:543606157745:android:0c5830255bb0dfaa5d8d90',
-    messagingSenderId: '543606157745',
-    projectId: 'agenteste-3a825',
-    storageBucket: 'agenteste-3a825.appspot.com',
+    apiKey: 'AIzaSyCY4ADDPWYMBELhbEbBPGfqgOSLZe5GybE',
+    appId: '1:32853315140:android:4bd9d3c97b70e12c4e7611',
+    messagingSenderId: '32853315140',
+    projectId: 'chatapp-afb62',
+    storageBucket: 'chatapp-afb62.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA9yjEhBGfQuk79Y_5I2CB8WwseinmAYHg',
-    appId: '1:543606157745:ios:3a75751215a55d385d8d90',
-    messagingSenderId: '543606157745',
-    projectId: 'agenteste-3a825',
-    storageBucket: 'agenteste-3a825.appspot.com',
-    iosBundleId: 'com.example.agencleanProject',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyA9yjEhBGfQuk79Y_5I2CB8WwseinmAYHg',
-    appId: '1:543606157745:ios:b49b452dd05d4fb45d8d90',
-    messagingSenderId: '543606157745',
-    projectId: 'agenteste-3a825',
-    storageBucket: 'agenteste-3a825.appspot.com',
-    iosBundleId: 'com.example.agencleanProject.RunnerTests',
+    apiKey: 'AIzaSyAHrCdv_cfk8EiJzy-wo_qIzykCnOH9o5Y',
+    appId: '1:32853315140:ios:f64609ac4b04bcd14e7611',
+    messagingSenderId: '32853315140',
+    projectId: 'chatapp-afb62',
+    storageBucket: 'chatapp-afb62.appspot.com',
+    iosBundleId: 'com.example.chatMessengerApp',
   );
 }

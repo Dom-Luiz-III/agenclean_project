@@ -1,6 +1,6 @@
 import 'package:agenclean_project/components/chat_bubble.dart';
 import 'package:agenclean_project/components/my_text_field.dart';
-import 'package:agenclean_project/services/chat/chat_service.dart';
+import 'package:agenclean_project/services/auth/chat/chat_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:agenclean_project/services/auth_service.dart';
+import 'package:agenclean_project/services/auth/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +28,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Bate papo!"),
+        actions: [
+          //sign out button
+          IconButton(
+            onPressed: signOut,
+            icon: const Icon(Icons.logout),
+          )
+        ],
+      ),
       body: _buildUserList(),
     );
   }
