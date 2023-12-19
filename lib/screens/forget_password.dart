@@ -27,7 +27,7 @@ class ForgetPasswordPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: corMaisEscura,
         automaticallyImplyLeading: false,
-        title: const Text('Resetar sua Senha'),
+        title: const Text('Resetar sua Senha', style: TextStyle(color: Colors.white),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
