@@ -22,15 +22,16 @@ class _RegisterPageState extends State<RegisterPage> {
   bool _isPasswordVisible = false;
   // Mascara para formato do número de telefone
   final MaskTextInputFormatter phoneFormatter = MaskTextInputFormatter(
-  mask: '(##) #####-####',
-  filter: {"#": RegExp(r'[0-9]')},
+    mask: '(##) #####-####',
+    filter: {"#": RegExp(r'[0-9]')},
   );
 
   void _registerUser(BuildContext context) async {
     // Verifica se os campos obrigatórios estão vazios
     if (emailController.text.isEmpty ||
         passwordController.text.isEmpty ||
-        confirmPasswordController.text.isEmpty) {
+        confirmPasswordController.text.isEmpty ||
+        fullNameController.text.isEmpty) {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
