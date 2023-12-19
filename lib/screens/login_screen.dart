@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:agenclean_project/constants.dart';
 import 'package:agenclean_project/screens/register_screen.dart';
 import '/screens/home.dart';
+import 'package:agenclean_project/screens/forget_password.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -239,20 +240,37 @@ class _FormContentState extends State<_FormContent> {
               controller: widget.passwordController,
             ),
             _gap(),
-            CheckboxListTile(
-              value: _rememberMe,
-              onChanged: (value) {
-                if (value == null) return;
-                setState(() {
-                  _rememberMe = value;
-                });
-              },
-              title: const Text('Lembrar senha',
-                  style: TextStyle(color: Colors.white)),
-              controlAffinity: ListTileControlAffinity.leading,
-              dense: true,
-              contentPadding: const EdgeInsets.all(0),
-              activeColor: laranjaPrimario,
+            Row(
+              children: [
+                Checkbox(
+                  value: _rememberMe,
+                  onChanged: (value) {
+                    if (value == null) return;
+                    setState(() {
+                      _rememberMe = value;
+                    });
+                  },
+                  activeColor: laranjaPrimario,
+                ),
+                const Text(
+                  'Lembrar senha',
+                  style: TextStyle(color: Colors.white),
+                ),
+                const Spacer(),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ForgetPasswordPage()),
+                    );
+                  },
+                  child: const Text(
+                    'Esqueci a senha',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
             _gap(),
             SizedBox(
