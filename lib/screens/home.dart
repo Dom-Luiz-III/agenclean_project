@@ -5,7 +5,6 @@ import 'package:agenclean_project/pages/home_page.dart';
 import 'package:agenclean_project/screens/profile_screen.dart';
 import 'package:agenclean_project/constants.dart';
 import 'package:agenclean_project/screens/settings_page.dart';
-import 'package:agenclean_project/screens/profile_screen.dart';
 
 void main() {
   runApp(const MainApp());

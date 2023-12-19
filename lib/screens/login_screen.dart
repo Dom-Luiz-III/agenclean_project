@@ -67,33 +67,39 @@ class SignInPage extends StatelessWidget {
       backgroundColor: cordeFundo1,
       body: Center(
         child: isSmallScreen
-            ? Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const _Logo(),
-                  _FormContent(
-                    emailController: emailController,
-                    passwordController: passwordController,
-                    loginUser: loginUser,
-                  )
-                ],
-              )
-            : Container(
-                padding: const EdgeInsets.all(32.0),
-                constraints: const BoxConstraints(maxWidth: 800),
-                child: Row(
+            ? SingleChildScrollView(
+                // Adiciona o SingleChildScrollView aqui
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Expanded(child: _Logo()),
-                    Expanded(
-                      child: Center(
-                        child: _FormContent(
-                          emailController: emailController,
-                          passwordController: passwordController,
-                          loginUser: loginUser,
+                    const _Logo(),
+                    _FormContent(
+                      emailController: emailController,
+                      passwordController: passwordController,
+                      loginUser: loginUser,
+                    )
+                  ],
+                ),
+              )
+            : SingleChildScrollView(
+                // Adiciona o SingleChildScrollView aqui
+                child: Container(
+                  padding: const EdgeInsets.all(32.0),
+                  constraints: const BoxConstraints(maxWidth: 800),
+                  child: Row(
+                    children: [
+                      const Expanded(child: _Logo()),
+                      Expanded(
+                        child: Center(
+                          child: _FormContent(
+                            emailController: emailController,
+                            passwordController: passwordController,
+                            loginUser: loginUser,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
       ),
@@ -160,7 +166,6 @@ class _FormContentState extends State<_FormContent> {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       constraints: const BoxConstraints(maxWidth: 300),
       child: Form(
@@ -279,10 +284,8 @@ class _FormContentState extends State<_FormContent> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => RegisterPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterPage()));
               },
               child: Text(
                 'Realizar Cadastro',
