@@ -60,13 +60,14 @@ class _HomePageState extends State<HomePage> {
 
   // Display all users except the current user
   if (_auth.currentUser!.email != data['email']) {
+    final nome = data['fullName'] ?? ''; // Verificação para evitar valor nulo
     return Card(
       elevation: 2.0,
       margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
         title: Text(
-          data['email'],
+          nome,
           style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
         ),
         onTap: () {

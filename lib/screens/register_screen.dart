@@ -5,17 +5,43 @@ import 'package:agenclean_project/constants.dart';
 
 import '/screens/login_screen.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  String selectedAccountType = 'Prestador de Serviço'; // Default value
+  bool _isPasswordVisible = false;
 
-  RegisterPage({Key? key});
+  void _registerUser(BuildContext context) async {
+    // Verifica se os campos obrigatórios estão vazios
+    if (emailController.text.isEmpty ||
+        passwordController.text.isEmpty ||
+        confirmPasswordController.text.isEmpty) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Erro'),
+          content:
+              const Text('Por favor, preencha todos os campos obrigatórios.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
 
-  Future<void> _registerUser(BuildContext context) async {
     try {
       if (passwordController.text != confirmPasswordController.text) {
         // Senhas não coincidem, exiba uma mensagem de erro
@@ -44,10 +70,7 @@ class RegisterPage extends StatelessWidget {
       if (userCredential.user != null) {
         String uid = userCredential.user!.uid;
         // Salve as informações adicionais no Firestore
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(uid)
-            .set({
+        await FirebaseFirestore.instance.collection('users').doc(uid).set({
           'uid': uid,
           'email': emailController.text,
           'fullName': fullNameController.text,
@@ -75,14 +98,14 @@ class RegisterPage extends StatelessWidget {
     } on FirebaseAuthException catch (e) {
       print('Error: $e');
 
-      // Verifica se o erro é relacionado a um email já existente
       if (e.code == 'email-already-in-use') {
+        // ignore: use_build_context_synchronously
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
             title: const Text('Erro'),
-            content:
-                const Text('Este email já está registrado. Por favor, use outro.'),
+            content: const Text(
+                'Este email já está registrado. Por favor, use outro.'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
@@ -128,6 +151,31 @@ class RegisterPage extends StatelessWidget {
               labelStyle: TextStyle(color: Colors.white),
             ),
           ),
+          DropdownButtonFormField<String>(
+            value: selectedAccountType,
+            onChanged: (newValue) {
+              setState(() {
+                selectedAccountType = newValue!;
+              });
+            },
+            items: <String>['Prestador de Serviço', 'Contrante']
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(
+                  value,
+                  style: const TextStyle(color: Colors.white),
+                ),
+              );
+            }).toList(),
+            decoration: InputDecoration(
+              labelText: 'Tipo de conta',
+              labelStyle: TextStyle(color: Colors.white),
+              filled: true,
+              fillColor: cordeFundo1,
+            ),
+            dropdownColor: cordeFundo1,
+          ),
           TextField(
             controller: phoneController,
             style: const TextStyle(color: Colors.white),
@@ -140,19 +188,41 @@ class RegisterPage extends StatelessWidget {
             controller: passwordController,
             style: const TextStyle(
                 color: Colors.white), // Defina a cor do texto para branco
-            decoration: const InputDecoration(
-              labelText: 'Senha',
-              labelStyle: TextStyle(color: Colors.white),
-            ),
+            decoration: InputDecoration(
+                labelText: 'Senha',
+                labelStyle: TextStyle(color: Colors.white),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isPasswordVisible = !_isPasswordVisible;
+                    });
+                  },
+                )),
             obscureText: true,
           ),
           TextField(
             controller: confirmPasswordController,
             style: const TextStyle(color: Colors.white),
-            decoration: const InputDecoration(
-              labelText: 'Repetir Senha',
-              labelStyle: TextStyle(color: Colors.white),
-            ),
+            decoration: InputDecoration(
+                labelText: 'Repetir Senha',
+                labelStyle: TextStyle(color: Colors.white),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isPasswordVisible = !_isPasswordVisible;
+                    });
+                  },
+                )),
             obscureText: true,
           ),
           const SizedBox(height: 50.0),
