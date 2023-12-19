@@ -1,6 +1,7 @@
 import 'package:agenclean_project/services/auth/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:agenclean_project/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,16 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Bate papo!"),
-        actions: [
-          //sign out button
-          IconButton(
-            onPressed: signOut,
-            icon: const Icon(Icons.logout),
-          )
-        ],
-      ),
+      backgroundColor: corMaisEscura,
       body: _buildUserList(),
     );
   }
@@ -64,14 +56,21 @@ class _HomePageState extends State<HomePage> {
 
   // build individual user list items
   Widget _buildUserListItem(DocumentSnapshot document) {
-    Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+  Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
-    //display all users except current user
-    if (_auth.currentUser!.email != data['email']) {
-      return ListTile(
-        title: Text(data['email']),
+  // Display all users except the current user
+  if (_auth.currentUser!.email != data['email']) {
+    return Card(
+      elevation: 2.0,
+      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+      child: ListTile(
+        contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        title: Text(
+          data['email'],
+          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+        ),
         onTap: () {
-          //pass the clicked user UID to the chat page
+          // Pass the clicked user UID to the chat page
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -82,10 +81,11 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         },
-      );
-    } else {
-      // return empty container
-      return Container();
-    }
+      ),
+    );
+  } else {
+    // Return empty container for the current user
+    return Container();
   }
+}
 }
