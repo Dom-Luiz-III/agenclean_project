@@ -109,21 +109,10 @@ class _GoogleBottomBarState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       key: _scaffoldKey,
       backgroundColor: cordeFundo1,
       appBar: AppBar(
-        leading: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 25.0),
-              child: Image.network(
-                'https://i.ibb.co/VmXK0gC/home-logo.png',
-                width: 100,
-                height: 56,
-              ),
-            ),
-          ],
-        ),
         backgroundColor: const Color(0xFF22272B),
         automaticallyImplyLeading: false,
         actions: [
@@ -132,6 +121,21 @@ class _GoogleBottomBarState extends State<Home> {
             onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
           ),
         ],
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(left: 25.0, top: 25.0),
+          child: Row(
+            children: [
+              Flexible(
+                child: Image.network(
+                  'https://i.ibb.co/VmXK0gC/home-logo.png',
+                  width: 120,
+                  height: 100,
+                ),
+              ),
+            ],
+          ),
+        ),
+        
       ),
       endDrawer: _drawer(), // Abre o menu na lateral direita
       body: _pageWidgets[
@@ -148,6 +152,7 @@ class _GoogleBottomBarState extends State<Home> {
         },
         items: _navBarItems,
         backgroundColor: Colors.orange[900],
+        itemPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       ),
     );
   }
