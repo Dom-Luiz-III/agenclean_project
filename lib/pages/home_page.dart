@@ -62,12 +62,12 @@ class _HomePageState extends State<HomePage> {
   if (_auth.currentUser!.email != data['email']) {
     return Card(
       elevation: 2.0,
-      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: ListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
         title: Text(
           data['email'],
-          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
         ),
         onTap: () {
           // Pass the clicked user UID to the chat page

@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:agenclean_project/constants.dart';
 
 import '/screens/login_screen.dart';
-import '/screens/forget_password.dart';
 
 class RegisterPage extends StatelessWidget {
   final TextEditingController fullNameController = TextEditingController();
@@ -13,21 +12,22 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
-  bool accountCreated = false;
 
-  void _registerUser(BuildContext context) async {
+  RegisterPage({Key? key});
+
+  Future<void> _registerUser(BuildContext context) async {
     try {
       if (passwordController.text != confirmPasswordController.text) {
         // Senhas não coincidem, exiba uma mensagem de erro
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Erro'),
-            content: Text('As senhas não coincidem.'),
+            title: const Text('Erro'),
+            content: const Text('As senhas não coincidem.'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           ),
@@ -53,26 +53,47 @@ class RegisterPage extends StatelessWidget {
           'fullName': fullNameController.text,
           'phone': phoneController.text,
         });
+
         // ignore: use_build_context_synchronously
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Sucesso'),
-            content: Text('Conta criada com sucesso!'),
+            title: const Text('Sucesso'),
+            content: const Text('Conta criada com sucesso!'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context); // Fechar o diálogo
                   Navigator.pop(context); // Voltar para a tela de login
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      print('Error: $e');
+
+      // Verifica se o erro é relacionado a um email já existente
+      if (e.code == 'email-already-in-use') {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Erro'),
+            content:
+                const Text('Este email já está registrado. Por favor, use outro.'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('OK'),
               ),
             ],
           ),
         );
       }
     } catch (e) {
-      print('Error: $e');
+      print('Erro inesperado: $e');
     }
   }
 
@@ -92,7 +113,7 @@ class RegisterPage extends StatelessWidget {
           // Campos para preencher
           TextField(
             controller: emailController,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white), // Defina a cor do texto para branco
             decoration: const InputDecoration(
               labelText: 'Email',
@@ -101,7 +122,7 @@ class RegisterPage extends StatelessWidget {
           ),
           TextField(
             controller: fullNameController,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
             decoration: const InputDecoration(
               labelText: 'Nome Completo',
               labelStyle: TextStyle(color: Colors.white),
@@ -109,7 +130,7 @@ class RegisterPage extends StatelessWidget {
           ),
           TextField(
             controller: phoneController,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
             decoration: const InputDecoration(
               labelText: 'Telefone',
               labelStyle: TextStyle(color: Colors.white),
@@ -117,7 +138,7 @@ class RegisterPage extends StatelessWidget {
           ),
           TextField(
             controller: passwordController,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white), // Defina a cor do texto para branco
             decoration: const InputDecoration(
               labelText: 'Senha',
@@ -127,7 +148,7 @@ class RegisterPage extends StatelessWidget {
           ),
           TextField(
             controller: confirmPasswordController,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
             decoration: const InputDecoration(
               labelText: 'Repetir Senha',
               labelStyle: TextStyle(color: Colors.white),
@@ -152,7 +173,7 @@ class RegisterPage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => LoginPage()),
+                MaterialPageRoute(builder: (context) => const LoginPage()),
               );
             },
             child: const Text(
