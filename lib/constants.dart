@@ -17,3 +17,4 @@ Image timeLimpeza = Image.asset('assets/images/time_limpeza.png');
 Image diarista = Image.asset('assets/images/diarista.png');
 Image escudo = Image.asset('assets/images/escudo.png');
 Image conforto = Image.asset('assets/images/conforto.png');
+Image profile = Image.asset('assets/images/foto_sem_perfil.png');
