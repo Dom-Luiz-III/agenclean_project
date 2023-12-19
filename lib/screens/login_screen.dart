@@ -8,6 +8,7 @@ class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
 }
 
@@ -23,6 +24,7 @@ class _LoginScreenState extends State<LoginPage> {
         email: emailController.text.trim(),
         password: passwordController.text,
       );
+      // ignore: use_build_context_synchronously
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Home()),
@@ -61,13 +63,14 @@ class SignInPage extends StatelessWidget {
     final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     return Scaffold(
-      backgroundColor: corEscura,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: cordeFundo1,
       body: Center(
         child: isSmallScreen
             ? Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  _Logo(),
+                  const _Logo(),
                   _FormContent(
                     emailController: emailController,
                     passwordController: passwordController,
@@ -80,7 +83,7 @@ class SignInPage extends StatelessWidget {
                 constraints: const BoxConstraints(maxWidth: 800),
                 child: Row(
                   children: [
-                    Expanded(child: _Logo()),
+                    const Expanded(child: _Logo()),
                     Expanded(
                       child: Center(
                         child: _FormContent(
@@ -157,7 +160,6 @@ class _FormContentState extends State<_FormContent> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     return Container(
       constraints: const BoxConstraints(maxWidth: 300),

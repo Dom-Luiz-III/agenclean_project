@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:agenclean_project/constants.dart';
 
 import '/screens/register_screen.dart';
 import '/screens/login_screen.dart';
@@ -22,34 +23,44 @@ class ForgetPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: cordeFundo1,
       appBar: AppBar(
+        backgroundColor: corMaisEscura,
         automaticallyImplyLeading: false,
-        title: Text('Reset seu Password'),
+        title: const Text('Resetar sua Senha'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
               controller: emailController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Email',
+                labelStyle: TextStyle(color: Colors.white),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  backgroundColor: laranjaPrimario,
+                  foregroundColor: corBranca,
+                ),
               onPressed: () => _resetPassword(context),
-              child: Text('Resetar Password'),
+              child: const Text('Resetar Senha'),
             ),
             const SizedBox(height: 16.0),
             TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
                 );
               },
-              child: const Text('Você possui uma conta? Click aqui!'),
+              child: const Text('Você possui uma conta? Clique aqui!',style: TextStyle(color: Color.fromARGB(255, 241, 109, 0))),
             ),
             const SizedBox(height: 16.0),
             TextButton(
@@ -59,7 +70,7 @@ class ForgetPasswordPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => RegisterPage()),
                 );
               },
-              child: const Text("Você ainda não tem uma conta?"),
+              child: const Text("Você ainda não tem uma conta?",style: TextStyle(color: Color.fromARGB(255, 241, 109, 0))),
             ),
           ],
         ),

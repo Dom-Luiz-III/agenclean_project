@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:agenclean_project/constants.dart';
+
+import '/screens/login_screen.dart';
 import '/screens/forget_password.dart';
 
 // ignore: use_key_in_widget_constructors
@@ -12,10 +15,9 @@ class RegisterPage extends StatelessWidget {
       // ignore: unused_local_variable
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
+        email: emailController.text,
         password: passwordController.text,
       );
-      print('Usuário registrado com sucesso!');
     } catch (e) {
       print('Error: $e');
     }
@@ -24,9 +26,11 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: cordeFundo1,
       appBar: AppBar(
+        backgroundColor: corMaisEscura,
         automaticallyImplyLeading: false,
-        title: const Text('Registrar'),
+        title: const Text('Registrar Conta'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -36,17 +40,26 @@ class RegisterPage extends StatelessWidget {
               controller: emailController,
               decoration: const InputDecoration(
                 labelText: 'Email',
+                labelStyle: TextStyle(color: Colors.white),
               ),
             ),
             TextField(
               controller: passwordController,
               decoration: const InputDecoration(
-                labelText: 'Password',
+                labelText: 'Senha',
+                labelStyle: TextStyle(color: Colors.white),
               ),
               obscureText: true,
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 20.0),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  backgroundColor: laranjaPrimario, // Cor da caixa
+                  foregroundColor: corBranca, // Cor do texto
+                ),
               onPressed: () => _registerUser(context),
               child: const Text('Registrar'),
             ),
@@ -55,10 +68,11 @@ class RegisterPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ForgetPasswordPage()),
+                  MaterialPageRoute(builder: (context) => LoginPage()),
                 );
               },
-              child: const Text('Você possui uma conta? Click aqui'),
+              child: const Text('Você possui uma conta? Clique aqui',
+                  style: TextStyle(color: Color.fromARGB(255, 241, 109, 0))),
             ),
             const SizedBox(height: 16.0),
             TextButton(
@@ -68,7 +82,8 @@ class RegisterPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => ForgetPasswordPage()),
                 );
               },
-              child: const Text('Esqueceu sua senha?'),
+              child: const Text('Esqueceu sua senha?',
+                  style: TextStyle(color: Color.fromARGB(255, 241, 109, 0))),
             ),
           ],
         ),
