@@ -90,7 +90,7 @@ class _OnboardingPageState extends State<OnboardingPagePresenter> {
                         Expanded(
                           flex: 3,
                           child: Padding(
-                            padding: const EdgeInsets.all(32.0),
+                            padding: const EdgeInsets.all(28.0),
                             child: Image.network(
                               item.imageUrl,
                             ),
@@ -100,7 +100,7 @@ class _OnboardingPageState extends State<OnboardingPagePresenter> {
                             flex: 1,
                             child: Column(children: [
                               Padding(
-                                padding: const EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Text(item.title,
                                     style: Theme.of(context)
                                         .textTheme
