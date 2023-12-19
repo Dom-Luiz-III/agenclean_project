@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:agenclean_project/constants.dart';
-
-import '/screens/login_screen.dart';
+import 'package:agenclean_project/screens/login_screen.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -17,8 +17,14 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final TextEditingController typeServiceController = TextEditingController();
   String selectedAccountType = 'Prestador de Serviço'; // Default value
   bool _isPasswordVisible = false;
+  // Mascara para formato do número de telefone
+  final MaskTextInputFormatter phoneFormatter = MaskTextInputFormatter(
+  mask: '(##) #####-####',
+  filter: {"#": RegExp(r'[0-9]')},
+  );
 
   void _registerUser(BuildContext context) async {
     // Verifica se os campos obrigatórios estão vazios
@@ -68,6 +74,8 @@ class _RegisterPageState extends State<RegisterPage> {
       );
 
       if (userCredential.user != null) {
+        // Atualize o valor do typeServiceController com o tipo de conta selecionado
+        typeServiceController.text = selectedAccountType;
         String uid = userCredential.user!.uid;
         // Salve as informações adicionais no Firestore
         await FirebaseFirestore.instance.collection('users').doc(uid).set({
@@ -75,6 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
           'email': emailController.text,
           'fullName': fullNameController.text,
           'phone': phoneController.text,
+          'typeService': typeServiceController.text,
         });
 
         // ignore: use_build_context_synchronously
@@ -179,6 +188,7 @@ class _RegisterPageState extends State<RegisterPage> {
           TextField(
             controller: phoneController,
             style: const TextStyle(color: Colors.white),
+            inputFormatters: [phoneFormatter],
             decoration: const InputDecoration(
               labelText: 'Telefone',
               labelStyle: TextStyle(color: Colors.white),
