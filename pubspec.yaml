@@ -9,6 +9,9 @@ environment:
 dependencies:
   firebase_auth: ^4.15.3
   firebase_core: ^2.24.2
+  provider:
+  cloud_firestore: ^4.8.0
+
   flutter:
     sdk: flutter
   flutter_launcher_icons: ^0.13.1
@@ -17,7 +20,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
+  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true

@@ -1,10 +1,23 @@
-import 'package:agenclean_project/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:agenclean_project/constants.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:agenclean_project/screens/login_screen.dart';
-import 'package:agenclean_project/screens/settings_page.dart';
-import 'package:agenclean_project/screens/profile_screen.dart';
+import 'package:agenclean_project/pages/home_page.dart';
+
+void main() {
+  runApp(const MainApp());
+}
+
+class MainApp extends StatelessWidget {
+  const MainApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Home(),
+    );
+  }
+}
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -19,77 +32,10 @@ class _GoogleBottomBarState extends State<Home> {
 
   // Aqui ficará o painel que aparece após clicar nos botões de Pesquisar, Chat e etc. Isso é apenas uma versão inicial
   final List<Widget> _pageWidgets = [
-    Padding(
-      padding: EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              CircleAvatar(
-                radius: 50,
-                backgroundImage: NetworkImage(
-                    'https://media.istockphoto.com/id/1049317672/pt/foto/indian-girl-with-phone.jpg?s=2048x2048&w=is&k=20&c=rq-cjjqr6aOUAmCOepQ32hlPoPiH9xORR7_XSpFWb0M='),
-              ),
-              SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Nome do Usuário',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Icon(Icons.star, color: Colors.yellow),
-                      Text(
-                        '4.5/5.0',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: 20),
-          Align(
-            alignment: Alignment.center,
-            child: Container(
-              constraints: BoxConstraints(maxWidth: 200),
-              child: Text(
-                'Profissionais próximos disponíveis',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          // Linha divisoria
-          Divider(
-            color: corBranca,
-            thickness: 2.0,
-            indent: 0, // Espaçamento à esquerda do Divider
-            endIndent: 0, // Espaçamento à direita do Divider
-          ),
-          const SizedBox(height: 20),
-        ],
-      ),
+    // Conteúdo para o item "Inicio"
+    Center(
+      child: Text("Página Inicial test"),
     ),
-
     // Conteúdo para o item "Pesquisar"
     Center(
       child: Text("Pesquisar test"),
@@ -98,21 +44,28 @@ class _GoogleBottomBarState extends State<Home> {
     Center(
       child: Text("Adicionar test"),
     ),
-    // Conteúdo para o item "Chat"
+
+    //chat botao
     Center(
-      child: Text("Chat test"),
+      child: Text("adicionar chat"),
     ),
+
     // Conteúdo para o item "Perfil"
-    ProfilePage(),
+    Center(
+      child: Text("Perfil test"),
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       key: _scaffoldKey,
-      backgroundColor: cordeFundo1,
+      backgroundColor: const Color(0xFF22272B),
       appBar: AppBar(
+        title: const Text(
+          'AGENCLEAN contratante',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: const Color(0xFF22272B),
         automaticallyImplyLeading: false,
         actions: [
@@ -121,21 +74,6 @@ class _GoogleBottomBarState extends State<Home> {
             onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
           ),
         ],
-        flexibleSpace: Padding(
-          padding: const EdgeInsets.only(left: 25.0, top: 25.0),
-          child: Row(
-            children: [
-              Flexible(
-                child: Image.network(
-                  'https://i.ibb.co/VmXK0gC/home-logo.png',
-                  width: 120,
-                  height: 100,
-                ),
-              ),
-            ],
-          ),
-        ),
-        
       ),
       endDrawer: _drawer(), // Abre o menu na lateral direita
       body: _pageWidgets[
@@ -149,10 +87,45 @@ class _GoogleBottomBarState extends State<Home> {
           setState(() {
             _selectedIndex = index;
           });
+
+          // Navegação para páginas diferentes com base no índice clicado
+          switch (index) {
+            case 0:
+              //Navigator.pushReplacement(
+              //context,
+              //MaterialPageRoute(builder: (context) => Home()),
+              //);
+              break;
+            case 1:
+              //Navigator.pushReplacement(
+              //context,
+              //MaterialPageRoute(builder: (context) => PesquisarPage()),
+              //);
+              break;
+            case 2:
+              //Navigator.pushReplacement(
+              //context,
+              //MaterialPageRoute(builder: (context) => AdicionarPage()),);
+              break;
+            case 3:
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
+              break;
+            case 4:
+              //Navigator.pushReplacement(
+              //context,
+              // MaterialPageRoute(builder: (context) => PerfilPage()),
+              // );
+              break;
+            default:
+              // Lidar com outros casos, se necessário
+              break;
+          }
         },
         items: _navBarItems,
         backgroundColor: Colors.orange[900],
-        itemPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       ),
     );
   }
@@ -186,32 +159,13 @@ class _GoogleBottomBarState extends State<Home> {
                     leading: Icon(iconData),
                     title: Text(item),
                   );
-                } else if (item == 'Perfil') {
-                  iconData = Icons.switch_account;
-                  return ListTile(
-                    onTap: () {
-                      _scaffoldKey.currentState?.openEndDrawer();
-                      // Lógica para lidar com a ação do item "Perfil"
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ProfilePage()),
-                      );
-                    },
-                    leading: Icon(iconData),
-                    title: Text(item),
-                  );
                 } else if (item == 'Configurações') {
                   iconData = Icons.settings;
                   return ListTile(
                     onTap: () {
                       _scaffoldKey.currentState?.openEndDrawer();
                       // Lógica para lidar com a ação do item "Configurações"
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PaginaConfiguracoes()),
-                      );
+                      print('test Configurações');
                     },
                     leading: Icon(iconData),
                     title: Text(item),
