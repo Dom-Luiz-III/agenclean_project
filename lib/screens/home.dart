@@ -1,3 +1,4 @@
+import 'package:agenclean_project/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:agenclean_project/screens/login_screen.dart';
@@ -46,14 +47,14 @@ class _GoogleBottomBarState extends State<Home> {
                 CircleAvatar(
                   radius: 50,
                   backgroundImage: NetworkImage(
-                      'https://media.istockphoto.com/id/1049317672/pt/foto/indian-girl-with-phone.jpg?s=2048x2048&w=is&k=20&c=rq-cjjqr6aOUAmCOepQ32hlPoPiH9xORR7_XSpFWb0M='),
+                      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'),
                 ),
                 SizedBox(width: 20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Nome do Usuário',
+                      'Paula Ferreira Silva',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -84,7 +85,7 @@ class _GoogleBottomBarState extends State<Home> {
               child: Container(
                 constraints: const BoxConstraints(maxWidth: 200),
                 child: const Text(
-                  'Profissionais próximos disponíveis',
+                  'Serviços Próximos Disponíveis',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
@@ -115,10 +116,10 @@ class _GoogleBottomBarState extends State<Home> {
                     const SizedBox(height: 20),
                     const SizedBox(height: 10),
                     _buildRecommendationBox(
-                      name: 'Marcos Augusto',
+                      name: 'Carlos Pereira da Silva',
                       rating: '4.5/5.0',
                       ratingDescription:
-                          'Sou diarista profissional, especializado em limpeza e organização. Também possuo habilidades culinárias.',
+                          'Preciso de uma diarista para serviço semanal em casa com dois quartos e dois banheiros. Interessados(as), por favor, entrem em contato!',
                       // profileImage: 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png',
                     ),
                     const SizedBox(height: 10),
@@ -126,7 +127,7 @@ class _GoogleBottomBarState extends State<Home> {
                       name: 'Ana Silva',
                       rating: '5.0/5.0',
                       ratingDescription:
-                          'Diarista experiente e dedicada. Cuido da sua casa como se fosse minha. Habilidades culinárias inclusas!',
+                          'Estou procurando uma babá confiável e carinhosa para cuidar dos meus filhos. Se você tem experiência e disponibilidade, entre em contato!',
                       // profileImage: 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png',
                     ),
                     const SizedBox(height: 10),
@@ -134,7 +135,7 @@ class _GoogleBottomBarState extends State<Home> {
                       name: 'Júlia Santos',
                       rating: '4.8/5.0',
                       ratingDescription:
-                          'Ótima diarista, realiza um trabalho impecável. Estou disponível para cuidar da sua casa com todo o carinho.',
+                          'Busco um jardineiro para cuidar do meu jardim. Se você possui habilidades nessa área, favor entrar em contato!',
                       // profileImage: 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png',
                     ),
                     const SizedBox(height: 10),
@@ -142,7 +143,7 @@ class _GoogleBottomBarState extends State<Home> {
                       name: 'Carlos Oliveira',
                       rating: '4.2/5.0',
                       ratingDescription:
-                          'Cuidadora dedicada e atenciosa. Recomendo seus serviços para quem busca um profissional de confiança.',
+                          'Estou precisando de um cozinheiro para preparar refeições em casa. Se você é apaixonado(a) pela culinária, entre em contato!',
                       // profileImage: 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png',
                     ),
                     const SizedBox(height: 10),
@@ -150,7 +151,7 @@ class _GoogleBottomBarState extends State<Home> {
                       name: 'Ester Lima',
                       rating: '4.7/5.0',
                       ratingDescription:
-                          'Ótima profissional, atenciosa e realiza um trabalho de alta qualidade. Estou disponível para diárias e cuidados especiais.',
+                          'Procuro um cuidador para auxiliar e acompanhar uma pessoa idosa. Se você é atencioso(a) e tem disponibilidade, por favor, entre em contato!',
                       // profileImage: 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png',
                     ),
                     const SizedBox(height: 10),
@@ -158,7 +159,7 @@ class _GoogleBottomBarState extends State<Home> {
                       name: 'Gabriela Souza',
                       rating: '4.9/5.0',
                       ratingDescription:
-                          'Excelente serviço, pontualidade impecável e muita dedicação. Estou pronta para atender suas necessidades de limpeza e organização.',
+                          'Estou precisando dos serviços de um eletricista para resolver problemas elétricos em minha casa. Se você é qualificado e pode ajudar, por favor, entre em contato!',
                       // profileImage: 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png',
                     ),
                     const SizedBox(height: 10),
@@ -166,7 +167,7 @@ class _GoogleBottomBarState extends State<Home> {
                       name: 'Lucas Pereira',
                       rating: '4.4/5.0',
                       ratingDescription:
-                          'Profissional competente, sempre cumprindo suas tarefas de maneira eficiente. Estou à disposição para oferecer meus serviços.',
+                          'Estou com vazamentos e problemas de encanamento em minha residência. Se você é um encanador experiente e pode resolver essas questões, por favor, entre em contato!',
                       // profileImage: 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png',
                     ),
                     const SizedBox(height: 10),
@@ -174,7 +175,7 @@ class _GoogleBottomBarState extends State<Home> {
                       name: 'Fernanda Oliveira',
                       rating: '4.6/5.0',
                       ratingDescription:
-                          'Dedicada e responsável, realiza seu trabalho com muito cuidado. Ofereço serviços de limpeza e organização.',
+                          'Estou procurando um professor particular para aulas de matemática. Se você é especialista nessa disciplina e tem experiência em lecionar, por favor, entre em contato!',
                       //  profileImage: 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png',
                     ),
                   ],
@@ -187,12 +188,10 @@ class _GoogleBottomBarState extends State<Home> {
     ),
 
     // Conteúdo para o item "Pesquisar"
-    Center(
-      child: Text("Pesquisar test"),
-    ),
+    SearchBarApp(),
     // Conteúdo para o item "Adicionar"
     Center(
-      child: Text("Adicionar test"),
+      child: Text("Implementação em Breve!", style: TextStyle(color: Colors.orange, fontSize: 28)),
     ),
     // Conteúdo para o item "Chat"
     const Center(
