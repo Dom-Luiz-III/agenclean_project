@@ -17,6 +17,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   salomon_bottom_bar: ^3.3.2
   mask_text_input_formatter: ^2.7.0
+  flutter_native_splash: ^2.3.8
 
 dev_dependencies:
   flutter_test:
@@ -45,3 +46,17 @@ flutter_launcher_icons:
   macos:
     generate: true
     image_path: "assets/icons/logo.png"
+
+flutter_native_splash:
+  color: "#01264E"
+  image: "assets/app/splash.png"
+  android: true
+  ios: true
+
+flutter_icons:
+  image_path: "assets/app/icon.png"
+  ios: true
+  remove_alpha_ios: true
+  android: "launcher_icon"
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: "assets/app/icon-android.png"
