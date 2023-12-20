@@ -214,7 +214,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     });
                   },
                 )),
-            obscureText: true,
+            obscureText: !_isPasswordVisible,
           ),
           TextField(
             controller: confirmPasswordController,
@@ -234,7 +234,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     });
                   },
                 )),
-            obscureText: true,
+            obscureText: !_isPasswordVisible,
           ),
           const SizedBox(height: 50.0),
           // Botão de Registrar
