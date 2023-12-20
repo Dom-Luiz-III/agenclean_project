@@ -79,7 +79,7 @@ class _GoogleBottomBarState extends State<Home> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Align(
               alignment: Alignment.center,
               child: Container(
@@ -116,7 +116,7 @@ class _GoogleBottomBarState extends State<Home> {
                     const SizedBox(height: 20),
                     const SizedBox(height: 10),
                     _buildRecommendationBox(
-                      name: 'Carlos Pereira da Silva',
+                      name: 'Carlos Pereira',
                       rating: '4.5/5.0',
                       ratingDescription:
                           'Preciso de uma diarista para serviço semanal em casa com dois quartos e dois banheiros. Interessados(as), por favor, entrem em contato!',
@@ -188,9 +188,9 @@ class _GoogleBottomBarState extends State<Home> {
     ),
 
     // Conteúdo para o item "Pesquisar"
-    SearchBarApp(),
+    const SearchBarApp(),
     // Conteúdo para o item "Adicionar"
-    Center(
+    const Center(
       child: Text("Implementação em Breve!", style: TextStyle(color: Colors.orange, fontSize: 28)),
     ),
     // Conteúdo para o item "Chat"
@@ -198,7 +198,7 @@ class _GoogleBottomBarState extends State<Home> {
       child: HomePage(),
     ),
     // Conteúdo para o item "Perfil"
-    ProfilePage(),
+    const ProfilePage(),
   ];
 
   @override
@@ -318,7 +318,7 @@ class _GoogleBottomBarState extends State<Home> {
                       // Navegar para a tela de login
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
                       );
                     },
                     leading: Icon(iconData),
@@ -411,7 +411,7 @@ Widget _buildRecommendationBox({
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               radius: 20,
               // backgroundImage: AssetImage(profileImage),
             ),
