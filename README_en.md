@@ -4,6 +4,8 @@ Trocar para o [Português](README.md)
 
 Base project for SENAI's final project (TCC) called AgenClean, an application focused on finding cleaners in your region as a client and trustworthy individuals to offer their services as providers.
 
+---
+
 ## Technologies Used 👨‍💻
 
 With our priority being to create an application for Android, IOS, and possibly Web, we chose these technologies to make it possible:
@@ -14,36 +16,40 @@ With our priority being to create an application for Android, IOS, and possibly 
 
 - Firebase: Google's mobile app development platform used for storing data, user authentication, and payment processing.
 
+---
+
 <details>
   <summary> <b> Project Screenshots </b> </summary>
 <p>
 
 Home page:
 
-![Web 1](https://github.com/Dom-Luiz-III/)
+![Web 1](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/inicio.jpg)
 
 Login area:
 
-![Web 2](https://github.com/Dom-Luiz-III/)
+![Web 2](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/login.jpg)
 
 Panel where an account can be created:
 
-![Web 3](https://github.com/Dom-Luiz-III/)
+![Web 3](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/nova_conta.jpg)
 
 Example profile:
 
-![Web 4](https://github.com/Dom-Luiz-III/)
+![Web 4](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/perfil.jpg)
 
 Comments section:
 
-![Web 5](https://github.com/Dom-Luiz-III/)
+![Web 5](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/chat_sessao.jpg)
 
 Panel to send messages to the other user:
 
-![Web 6](https://github.com/Dom-Luiz-III/)
+![Web 6](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/chat.jpg)
 
 </p>
 </details>
+
+---
 
 ## Project Members 👥
 
