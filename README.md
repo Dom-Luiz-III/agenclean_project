@@ -1,59 +1,63 @@
 Switch to [English](README_en.md)
 
-# Descrição 📔
+# Agen Clean - A conexão perfeita entre prestadores de serviço e contratantes 🌟
 
-Projeto base para o TCC do SENAI chamado AgenClean, um aplicativo focado para encontrar diaristas na sua região como cliente e pessoas confiáveis para prestar seus serviços como prestadora.
+Bem-vindo ao repositório oficial do Agen Clean, um projeto incrível desenvolvido em equipe como parte do TCC no curso de Desenvolvimento de Sistemas no SENAI. Este aplicativo foi concebido para resolver o problema da busca por prestadores de serviço confiáveis e clientes na região ou cidade. O Agen Clean oferece uma plataforma segura e eficiente para conectar diaristas a clientes em potencial, promovendo transparência, confiança e conveniência.
 
----
+## Equipe
 
-## Tecnologias Utilizadas 👨‍💻
+Conheça a equipe incrível por trás do Agen Clean:
 
-Com a nossa prioridade sendo em criar um aplicativo para Android, IOS e talvez Web, escolhemos essas tecnologias para que isso seja possível:
+- Ruan Cláudio Damasceno Souza [@ruanclaudio](https://github.com/ruanclaudio)
+- Luiz Henrique Carneiro Carvalho [@Dom-Luiz-III](https://github.com/Dom-Luiz-III)
+- Kleyton Lima Silva de Carvalho [@kleytoncarv](https://github.com/kleytoncarv)
+- Jessica Cordeiro da Silva [@jessica-cordeiro](https://www.linkedin.com/in/jessica-cordeiro-744193239/)
 
-- Flutter: Framework de desenvolvimento de aplicativos multiplataforma que permite criar interfaces de usuário bonitas e responsivas.
+## Recursos Principais 🚀
 
-- Dart: Linguagem de programação utilizada para desenvolver aplicativos Flutter. O Dart é uma linguagem moderna e eficiente, projetada especificamente para criar aplicativos móveis e web. Com sua sintaxe limpa e recursos poderosos, o Dart permite um desenvolvimento ágil e produtivo.
+### Para o Cliente
 
-- Firebase: Plataforma de desenvolvimento de aplicativos móveis do Google, utilizada para armazenar dados, autenticação de usuários e processamento de pagamentos.
+- **Lista de Diaristas Avaliadas**: Encontre diaristas bem avaliadas por outros usuários para garantir um serviço de qualidade.
+- **Mapa de Diaristas Próximas**: Visualize no mapa digital diaristas disponíveis em sua região para contratar serviços com mais praticidade.
+- **Avaliações e Comentários**: Deixe e leia avaliações detalhadas para tomar decisões informadas sobre os prestadores de serviço.
 
----
+### Para a Diarista
 
-<details>
-  <summary> <b> Prints do Projeto </b> </summary>
-<p>
+- **Ambiente Seguro e Reconhecimento**: Ofereça seus serviços em um ambiente seguro, onde seu trabalho é reconhecido através de avaliações positivas dos clientes.
+- **Localização de Clientes em Potencial**: Veja a localização dos possíveis clientes em um mapa para otimizar sua busca por oportunidades de trabalho.
+- **Configurações Personalizadas**: Defina seus próprios requisitos para prestar serviços, como a possibilidade de levar filhos, preferências alimentares, entre outros.
 
-Página inicial:
+## Vídeos Demonstrativos 📹
 
-![Web 1](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/inicio.jpg)
+### Landing Page:
 
-Área de login:
+<div align="center">
+  <img src="./images_github/landing-page.gif" width="400">
+</div>
 
-![Web 2](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/login.jpg)
+### Tela de Login:
 
-Painel onde é possível criar conta:
+<div align="center">
+  <img src="./images_github/realizando-login.gif" width="400">
+</div>
 
-![Web 3](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/nova_conta.jpg)
+### Tela de Cadastro:
 
-Perfil de exemplo:
+<div align="center">
+  <img src="./images_github/realizando-cadastro.gif" width="400">
+</div>
 
-![Web 4](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/perfil.jpg)
+### Tela Principal:
 
-Sessão de comentários:
+<div align="center">
+  <img src="./images_github/home-page.gif" width="400">
+</div>
 
-![Web 5](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/chat_sessao.jpg)
+### Navegação do Aplicativo:
 
-Painel para enviar mensagens ao outro usuário:
+<div align="center">
+  <img src="./images_github/demonstrando-app(1).gif" width="400">
+</div>
 
-![Web 6](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/chat.jpg)
 
-</p>
-</details>
-
----
-
-## Integrantes do Projeto 👥
-
-- Luiz Henrique Carneiro Carvalho
-- Kleyton Lima Silva de Carvalho
-- Ruan Cláudio Damasceno Souza
-- Jessica Cordeiro da Silva
+O Agen Clean é um projeto feito com paixão por uma equipe dedicada. Agradecemos por sua atenção! ✨
