@@ -32,31 +32,31 @@ Conheça a equipe incrível por trás do Agen Clean:
 ### Landing Page:
 
 <div align="center">
-  <img src="./images_github/landing-page.gif" width="400">
+  <img src="./github_readme_assets/landing-page.gif" width="400">
 </div>
 
 ### Tela de Login:
 
 <div align="center">
-  <img src="./images_github/realizando-login.gif" width="400">
+  <img src="./github_readme_assets/realizando-login.gif" width="400">
 </div>
 
 ### Tela de Cadastro:
 
 <div align="center">
-  <img src="./images_github/realizando-cadastro.gif" width="400">
+  <img src="./github_readme_assets/realizando-cadastro.gif" width="400">
 </div>
 
 ### Tela Principal:
 
 <div align="center">
-  <img src="./images_github/home-page.gif" width="400">
+  <img src="./github_readme_assets/home-page.gif" width="400">
 </div>
 
 ### Navegação do Aplicativo:
 
 <div align="center">
-  <img src="./images_github/demonstrando-app(1).gif" width="400">
+  <img src="./github_readme_assets/demonstrando-app.gif" width="400">
 </div>
 
 
