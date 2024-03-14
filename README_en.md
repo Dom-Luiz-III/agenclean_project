@@ -2,7 +2,6 @@ Trocar para o [Português](README.md)
 
 <div align="center">
 <h1>Agen Clean</h1> 
-<br>
 <h4>The Perfect Connection Between Service Providers and Clients 🌟</h4> 
 </div>
 
