@@ -59,6 +59,7 @@ Meet the amazing team behind Agen Clean:
   <img src="./github_readme_assets/demonstrando-app.gif" width="400">
 </div>
 
+---
 
 <p align="center">
 Agen Clean is a project made with passion by a dedicated team. Thank you for your attention! ✨
