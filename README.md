@@ -1,6 +1,10 @@
 Switch to [English](README_en.md)
 
-<h1 align="center">Agen Clean <br> A conexão perfeita entre prestadores de serviço e contratantes 🌟</h1>
+<div align="center">
+<h1>Agen Clean</h1> 
+<h4>A conexão perfeita entre prestadores de serviço e contratantes 🌟</h4> 
+<br>
+</div>
 
 Bem-vindo ao repositório oficial do Agen Clean, um projeto incrível desenvolvido em equipe como parte do TCC no curso de Desenvolvimento de Sistemas no SENAI. Este aplicativo foi concebido para resolver o problema da busca por prestadores de serviço confiáveis e clientes na região ou cidade. O Agen Clean oferece uma plataforma segura e eficiente para conectar diaristas a clientes em potencial, promovendo transparência, confiança e conveniência.
 
