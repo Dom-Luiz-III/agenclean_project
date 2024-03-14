@@ -1,59 +1,65 @@
 Trocar para o [Português](README.md)
 
-# Description 📔
+<h1 align="center">Agen Clean - The Perfect Connection Between Service Providers and Clients 🌟</h1>
 
-Base project for SENAI's final project (TCC) called AgenClean, an application focused on finding cleaners in your region as a client and trustworthy individuals to offer their services as providers.
+Welcome to the official repository of Agen Clean, an amazing project developed as a team as part of the final project in the Systems Development course at SENAI. This application was conceived to solve the problem of finding reliable service providers and clients in the region or city. Agen Clean offers a secure and efficient platform to connect cleaners with potential clients, promoting transparency, trust, and convenience.
 
----
+## Team
 
-## Technologies Used 👨‍💻
+Meet the amazing team behind Agen Clean:
 
-With our priority being to create an application for Android, IOS, and possibly Web, we chose these technologies to make it possible:
+- Ruan Cláudio Damasceno Souza [@ruanclaudio](https://github.com/ruanclaudio)
+- Luiz Henrique Carneiro Carvalho [@Dom-Luiz-III](https://github.com/Dom-Luiz-III)
+- Kleyton Lima Silva de Carvalho [@kleytoncarv](https://github.com/kleytoncarv)
+- Jessica Cordeiro da Silva [@jessica-cordeiro](https://www.linkedin.com/in/jessica-cordeiro-744193239/)
 
-- Flutter: A cross-platform app development framework that allows creating beautiful and responsive user interfaces.
+## Key Features 🚀
 
-- Dart: Programming language used to develop Flutter applications. Dart is a modern and efficient language designed specifically for creating mobile and web applications. With its clean syntax and powerful features, Dart enables agile and productive development.
+### For the Client
 
-- Firebase: Google's mobile app development platform used for storing data, user authentication, and payment processing.
+- **List of Rated Cleaners**: Find cleaners highly rated by other users to ensure quality service.
+- **Map of Nearby Cleaners**: View on a digital map cleaners available in your area to hire services more conveniently.
+- **Reviews and Comments**: Leave and read detailed reviews to make informed decisions about service providers.
 
----
+### For the Cleaner
 
-<details>
-  <summary> <b> Project Screenshots </b> </summary>
-<p>
+- **Safe Environment and Recognition**: Offer your services in a safe environment where your work is recognized through positive customer reviews.
+- **Location of Potential Clients**: See the location of potential clients on a map to optimize your search for job opportunities.
+- **Customized Settings**: Set your own requirements for providing services, such as the possibility of bringing children, dietary preferences, among others.
 
-Home page:
+## Demonstrative Videos 📹
 
-![Web 1](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/inicio.jpg)
+### Landing Page:
 
-Login area:
+<div align="center">
+  <img src="./github_readme_assets/landing-page.gif" width="400">
+</div>
 
-![Web 2](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/login.jpg)
+### Login Screen:
 
-Panel where an account can be created:
+<div align="center">
+  <img src="./github_readme_assets/realizando-login.gif" width="400">
+</div>
 
-![Web 3](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/nova_conta.jpg)
+### Registration Screen:
 
-Example profile:
+<div align="center">
+  <img src="./github_readme_assets/realizando-cadastro.gif" width="400">
+</div>
 
-![Web 4](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/perfil.jpg)
+### Main Screen:
 
-Comments section:
+<div align="center">
+  <img src="./github_readme_assets/home-page.gif" width="400">
+</div>
 
-![Web 5](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/chat_sessao.jpg)
+### App Navigation:
 
-Panel to send messages to the other user:
+<div align="center">
+  <img src="./github_readme_assets/demonstrando-app.gif" width="400">
+</div>
 
-![Web 6](https://github.com/Dom-Luiz-III/agenclean_project/blob/main/images_github/chat.jpg)
 
+<p align="center">
+Agen Clean is a project made with passion by a dedicated team. Thank you for your attention! ✨
 </p>
-</details>
-
----
-
-## Project Members 👥
-
-- Luiz Henrique Carneiro Carvalho
-- Kleyton Lima Silva de Carvalho
-- Ruan Cláudio Damasceno Souza
-- Jessica Cordeiro da Silva
