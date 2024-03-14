@@ -1,9 +1,9 @@
 Trocar para o [Português](README.md)
 
 <div align="center">
-# Agen Clean 
+<h1>Agen Clean</h1> 
 <br>
-## The Perfect Connection Between Service Providers and Clients 🌟
+<h4>The Perfect Connection Between Service Providers and Clients 🌟</h4> 
 </div>
 
 Welcome to the official repository of Agen Clean, an amazing project developed as a team as part of the final project in the Systems Development course at SENAI. This application was conceived to solve the problem of finding reliable service providers and clients in the region or city. Agen Clean offers a secure and efficient platform to connect cleaners with potential clients, promoting transparency, trust, and convenience.
